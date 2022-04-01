@@ -1,6 +1,6 @@
 {
   "plugins": ["@typescript-eslint"],
-  "extends": ["next", "prettier", "plugin:@typescript-eslint/eslint-recommended"],
+  "extends": ["prettier", "plugin:@typescript-eslint/eslint-recommended", "next"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error"

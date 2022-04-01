@@ -70,7 +70,7 @@ export default function ProviderCard({ provider }: Props) {
               </Box>
               <Box ml='4'>
                 <Box fontSize='lg' fontWeight='medium' lineHeight='6'>
-                  {t('locationAndContact')}
+                  {t('languageTranslationoffered')}:
                 </Box>
                 <Box mt='2' color={'text.secondary'}>
                   {t('location')}: <br />
