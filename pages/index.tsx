@@ -1,21 +1,11 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 
 export default function Home() {
-  console.log("HERE");
-  const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState(null)
-  const [session, setSession] = useState(null)
-  const [error, setError] = useState(null)
-
   useEffect(() => {
-    getAuth()
-  }, [])
-
     const getAuth = async () => {
-      setLoading(true)
-      let { user, session, error } = await supabase.auth.signIn({
+      const { user, session, error } = await supabase.auth.signIn({
         email: 'clark.wood@protonmail.com',
         password: 'c4gnv-pass'
       })
@@ -23,13 +13,13 @@ export default function Home() {
       console.log("SESSION: " + JSON.stringify(session))
       console.log("ERROR: " + JSON.stringify(error))
 
-      let { data, error2, status } = await supabase
+      const data = await supabase
       .from('programs')
       .select('*')
-      console.log("PROGRAMS: " + JSON.stringify(data))
-
-      setLoading(false)
+      console.log("PROGRAMS: " + JSON.stringify(data.data))
     }
+    getAuth()
+  }, [])
 
   return (
     <div>
