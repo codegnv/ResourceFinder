@@ -30,3 +30,10 @@ A set of Github actions are used to deploy to [Heroku](https://heroku.com). Thre
 - HEROKU_EMAIL
 
 The secrets that were updated in the `.env` file should be added to [Heroku](https://heroku.com).
+
+## Generating Database Types
+
+
+```bash
+npx openapi-typescript https://your-project.supabase.co/rest/v1/?apikey=your-anon-key --output models/supabase.ts
+```
