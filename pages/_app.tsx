@@ -1,6 +1,7 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
+import cacheInit from '../lib/airtableCache'
 
 const overrides = {
   colors: {
@@ -16,6 +17,8 @@ const overrides = {
 const theme = extendTheme(overrides)
 
 function MyApp({ Component, pageProps }: AppProps) {
+  cacheInit()
+
   return (
     <ChakraProvider theme={theme}>
       <Layout>

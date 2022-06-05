@@ -1,4 +1,4 @@
-import dbConnect from '../../../lib/dbConnect'
+import dbConnect from '../../../lib/airtableConnect'
 import Provider from '../../../models/Provider'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
