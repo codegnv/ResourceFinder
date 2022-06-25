@@ -12,6 +12,288 @@ export interface paths {
       };
     };
   };
+  "/amenities": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.amenities.id"];
+          created_at?: parameters["rowFilter.amenities.created_at"];
+          name?: parameters["rowFilter.amenities.name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["amenities"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** amenities */
+          amenities?: definitions["amenities"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.amenities.id"];
+          created_at?: parameters["rowFilter.amenities.created_at"];
+          name?: parameters["rowFilter.amenities.name"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.amenities.id"];
+          created_at?: parameters["rowFilter.amenities.created_at"];
+          name?: parameters["rowFilter.amenities.name"];
+        };
+        body: {
+          /** amenities */
+          amenities?: definitions["amenities"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/departments": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.departments.id"];
+          created_at?: parameters["rowFilter.departments.created_at"];
+          name?: parameters["rowFilter.departments.name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["departments"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** departments */
+          departments?: definitions["departments"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.departments.id"];
+          created_at?: parameters["rowFilter.departments.created_at"];
+          name?: parameters["rowFilter.departments.name"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.departments.id"];
+          created_at?: parameters["rowFilter.departments.created_at"];
+          name?: parameters["rowFilter.departments.name"];
+        };
+        body: {
+          /** departments */
+          departments?: definitions["departments"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/locations": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.locations.id"];
+          created_at?: parameters["rowFilter.locations.created_at"];
+          name?: parameters["rowFilter.locations.name"];
+          address?: parameters["rowFilter.locations.address"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["locations"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** locations */
+          locations?: definitions["locations"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.locations.id"];
+          created_at?: parameters["rowFilter.locations.created_at"];
+          name?: parameters["rowFilter.locations.name"];
+          address?: parameters["rowFilter.locations.address"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.locations.id"];
+          created_at?: parameters["rowFilter.locations.created_at"];
+          name?: parameters["rowFilter.locations.name"];
+          address?: parameters["rowFilter.locations.address"];
+        };
+        body: {
+          /** locations */
+          locations?: definitions["locations"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/programs": {
     get: {
       parameters: {
@@ -19,6 +301,7 @@ export interface paths {
           id?: parameters["rowFilter.programs.id"];
           created_at?: parameters["rowFilter.programs.created_at"];
           name?: parameters["rowFilter.programs.name"];
+          department_id?: parameters["rowFilter.programs.department_id"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -72,6 +355,7 @@ export interface paths {
           id?: parameters["rowFilter.programs.id"];
           created_at?: parameters["rowFilter.programs.created_at"];
           name?: parameters["rowFilter.programs.name"];
+          department_id?: parameters["rowFilter.programs.department_id"];
         };
         header: {
           /** Preference */
@@ -89,6 +373,7 @@ export interface paths {
           id?: parameters["rowFilter.programs.id"];
           created_at?: parameters["rowFilter.programs.created_at"];
           name?: parameters["rowFilter.programs.name"];
+          department_id?: parameters["rowFilter.programs.department_id"];
         };
         body: {
           /** programs */
@@ -105,9 +390,152 @@ export interface paths {
       };
     };
   };
+  "/services": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.services.id"];
+          created_at?: parameters["rowFilter.services.created_at"];
+          name?: parameters["rowFilter.services.name"];
+          program_id?: parameters["rowFilter.services.program_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["services"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** services */
+          services?: definitions["services"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.services.id"];
+          created_at?: parameters["rowFilter.services.created_at"];
+          name?: parameters["rowFilter.services.name"];
+          program_id?: parameters["rowFilter.services.program_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.services.id"];
+          created_at?: parameters["rowFilter.services.created_at"];
+          name?: parameters["rowFilter.services.name"];
+          program_id?: parameters["rowFilter.services.program_id"];
+        };
+        body: {
+          /** services */
+          services?: definitions["services"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
+  amenities: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name: string;
+  };
+  departments: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name?: string;
+  };
+  locations: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name: string;
+    /** Format: text */
+    address?: string;
+  };
   programs: {
     /**
      * Format: bigint
@@ -122,6 +550,33 @@ export interface definitions {
     created_at?: string;
     /** Format: text */
     name?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Foreign Key to `departments.id`.<fk table='departments' column='id'/>
+     */
+    department_id?: number;
+  };
+  services: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Foreign Key to `programs.id`.<fk table='programs' column='id'/>
+     */
+    program_id?: number;
   };
 }
 
@@ -158,6 +613,32 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
+  /** @description amenities */
+  "body.amenities": definitions["amenities"];
+  /** Format: bigint */
+  "rowFilter.amenities.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.amenities.created_at": string;
+  /** Format: text */
+  "rowFilter.amenities.name": string;
+  /** @description departments */
+  "body.departments": definitions["departments"];
+  /** Format: bigint */
+  "rowFilter.departments.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.departments.created_at": string;
+  /** Format: text */
+  "rowFilter.departments.name": string;
+  /** @description locations */
+  "body.locations": definitions["locations"];
+  /** Format: bigint */
+  "rowFilter.locations.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.locations.created_at": string;
+  /** Format: text */
+  "rowFilter.locations.name": string;
+  /** Format: text */
+  "rowFilter.locations.address": string;
   /** @description programs */
   "body.programs": definitions["programs"];
   /** Format: bigint */
@@ -166,6 +647,18 @@ export interface parameters {
   "rowFilter.programs.created_at": string;
   /** Format: text */
   "rowFilter.programs.name": string;
+  /** Format: bigint */
+  "rowFilter.programs.department_id": string;
+  /** @description services */
+  "body.services": definitions["services"];
+  /** Format: bigint */
+  "rowFilter.services.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.services.created_at": string;
+  /** Format: text */
+  "rowFilter.services.name": string;
+  /** Format: bigint */
+  "rowFilter.services.program_id": string;
 }
 
 export interface operations {}

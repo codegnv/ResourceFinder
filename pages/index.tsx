@@ -1,20 +1,14 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
+import { definitions } from '../models/supabase'
 
 export default function Home() {
   useEffect(() => {
     const getAuth = async () => {
-      const { user, session, error } = await supabase.auth.signIn({
-        email: 'clark.wood@protonmail.com',
-        password: 'c4gnv-pass'
-      })
-      console.log("USER: " + JSON.stringify(user))
-      console.log("SESSION: " + JSON.stringify(session))
-      console.log("ERROR: " + JSON.stringify(error))
 
       const data = await supabase
-      .from('programs')
+      .from<definitions['programs']>('programs')
       .select('*')
       console.log("PROGRAMS: " + JSON.stringify(data.data))
     }
