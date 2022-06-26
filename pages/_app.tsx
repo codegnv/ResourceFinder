@@ -1,27 +1,27 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { css, Global } from '@emotion/react'
+import emotionReset from 'emotion-reset'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 
-const overrides = {
-  colors: {
-    brand: {
-      primary: '#213c4c',
-      secondary: '#169BD5',
-    },
-    text: {
-      secondary: '#4a5568',
-    },
-  },
-}
-const theme = extendTheme(overrides)
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <>
+      <Global
+        styles={css`
+          ${emotionReset}
+
+          *, *::after, *::before {
+            box-sizing: border-box;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+          }
+        `}
+      />
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ChakraProvider>
+    </>
   )
 }
 

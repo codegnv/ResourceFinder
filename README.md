@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project using [TypeScript](https://www.
 
 [Volta](https://volta.sh/) is used to manage versions of JS tools.
 
-The component library is [ChakraUI](https://chakra-ui.com/).
+Styling is provided by [Emotion]https://emotion.sh/.
 
 The database is using [MongoDB](https://www.mongodb.com/) and is accessed via [Mongoose](https://mongoosejs.com/).
 
