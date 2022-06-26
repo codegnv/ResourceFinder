@@ -1,17 +1,15 @@
-import { Box } from '@chakra-ui/react'
 import Navbar from './Navbar'
 
 type Props = {
   children: React.ReactNode
 }
 
+// TODO: Refactor main
 export default function Layout({ children }: Props) {
   return (
     <>
       <Navbar />
-      <Box as='main' pt='50px' bg='#F9FAFB' minH='100vh'>
-        {children}
-      </Box>
+      <main style={{ minHeight: '100vh' }}>{children}</main>
     </>
   )
 }
