@@ -13,6 +13,7 @@ const StyledTabs = styled.div`
 `
 const StyledContent = styled.div`
   width: 100%;
+  position: relative;
 `
 
 function Tabs({}: ITabsProps) {
