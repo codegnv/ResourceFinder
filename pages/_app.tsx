@@ -6,8 +6,8 @@ import { ThemeProvider } from '@emotion/react'
 
 const theme = {
   colors: {
-    primary: '#1dc2ae',
-    secondary: '#676cc8',
+    primary: '#676cc8',
+    secondary: '#1dc2ae',
     base: '#0f191c',
     baseLight: '#ffffff',
     baseDark: '#333333',
