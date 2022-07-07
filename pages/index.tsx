@@ -7,10 +7,16 @@ export default function Home() {
   useEffect(() => {
     const getAuth = async () => {
 
-      const data = await supabase
-      .from<definitions['programs']>('programs')
+      // categories are "tags" in the database
+      const response = await supabase
+      .from<definitions['tags']>('tags')
       .select('*')
-      console.log("PROGRAMS: " + JSON.stringify(data.data))
+      if (response.data) {
+        response.data.forEach(function (value) {
+          console.log((value.name))
+        })
+      }
+
     }
     getAuth()
   }, [])
