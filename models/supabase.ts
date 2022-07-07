@@ -294,6 +294,192 @@ export interface paths {
       };
     };
   };
+  "/locations_amenities": {
+    get: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_amenities.created_at"];
+          location_id?: parameters["rowFilter.locations_amenities.location_id"];
+          amenity_id?: parameters["rowFilter.locations_amenities.amenity_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["locations_amenities"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** locations_amenities */
+          locations_amenities?: definitions["locations_amenities"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_amenities.created_at"];
+          location_id?: parameters["rowFilter.locations_amenities.location_id"];
+          amenity_id?: parameters["rowFilter.locations_amenities.amenity_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_amenities.created_at"];
+          location_id?: parameters["rowFilter.locations_amenities.location_id"];
+          amenity_id?: parameters["rowFilter.locations_amenities.amenity_id"];
+        };
+        body: {
+          /** locations_amenities */
+          locations_amenities?: definitions["locations_amenities"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/locations_services": {
+    get: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_services.created_at"];
+          location_id?: parameters["rowFilter.locations_services.location_id"];
+          service_id?: parameters["rowFilter.locations_services.service_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["locations_services"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** locations_services */
+          locations_services?: definitions["locations_services"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_services.created_at"];
+          location_id?: parameters["rowFilter.locations_services.location_id"];
+          service_id?: parameters["rowFilter.locations_services.service_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.locations_services.created_at"];
+          location_id?: parameters["rowFilter.locations_services.location_id"];
+          service_id?: parameters["rowFilter.locations_services.service_id"];
+        };
+        body: {
+          /** locations_services */
+          locations_services?: definitions["locations_services"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/programs": {
     get: {
       parameters: {
@@ -390,6 +576,99 @@ export interface paths {
       };
     };
   };
+  "/programs_services": {
+    get: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.programs_services.created_at"];
+          program_id?: parameters["rowFilter.programs_services.program_id"];
+          service_id?: parameters["rowFilter.programs_services.service_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["programs_services"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** programs_services */
+          programs_services?: definitions["programs_services"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.programs_services.created_at"];
+          program_id?: parameters["rowFilter.programs_services.program_id"];
+          service_id?: parameters["rowFilter.programs_services.service_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.programs_services.created_at"];
+          program_id?: parameters["rowFilter.programs_services.program_id"];
+          service_id?: parameters["rowFilter.programs_services.service_id"];
+        };
+        body: {
+          /** programs_services */
+          programs_services?: definitions["programs_services"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/services": {
     get: {
       parameters: {
@@ -397,7 +676,6 @@ export interface paths {
           id?: parameters["rowFilter.services.id"];
           created_at?: parameters["rowFilter.services.created_at"];
           name?: parameters["rowFilter.services.name"];
-          program_id?: parameters["rowFilter.services.program_id"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -451,7 +729,6 @@ export interface paths {
           id?: parameters["rowFilter.services.id"];
           created_at?: parameters["rowFilter.services.created_at"];
           name?: parameters["rowFilter.services.name"];
-          program_id?: parameters["rowFilter.services.program_id"];
         };
         header: {
           /** Preference */
@@ -469,11 +746,196 @@ export interface paths {
           id?: parameters["rowFilter.services.id"];
           created_at?: parameters["rowFilter.services.created_at"];
           name?: parameters["rowFilter.services.name"];
-          program_id?: parameters["rowFilter.services.program_id"];
         };
         body: {
           /** services */
           services?: definitions["services"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/tags": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tags.id"];
+          created_at?: parameters["rowFilter.tags.created_at"];
+          name?: parameters["rowFilter.tags.name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["tags"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** tags */
+          tags?: definitions["tags"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tags.id"];
+          created_at?: parameters["rowFilter.tags.created_at"];
+          name?: parameters["rowFilter.tags.name"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tags.id"];
+          created_at?: parameters["rowFilter.tags.created_at"];
+          name?: parameters["rowFilter.tags.name"];
+        };
+        body: {
+          /** tags */
+          tags?: definitions["tags"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/tags_services": {
+    get: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.tags_services.created_at"];
+          tag_id?: parameters["rowFilter.tags_services.tag_id"];
+          service_id?: parameters["rowFilter.tags_services.service_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["tags_services"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** tags_services */
+          tags_services?: definitions["tags_services"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.tags_services.created_at"];
+          tag_id?: parameters["rowFilter.tags_services.tag_id"];
+          service_id?: parameters["rowFilter.tags_services.service_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.tags_services.created_at"];
+          tag_id?: parameters["rowFilter.tags_services.tag_id"];
+          service_id?: parameters["rowFilter.tags_services.service_id"];
+        };
+        body: {
+          /** tags_services */
+          tags_services?: definitions["tags_services"];
         };
         header: {
           /** Preference */
@@ -536,6 +998,48 @@ export interface definitions {
     /** Format: text */
     address?: string;
   };
+  locations_amenities: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `locations.id`.<fk table='locations' column='id'/>
+     */
+    location_id: number;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `amenities.id`.<fk table='amenities' column='id'/>
+     */
+    amenity_id: number;
+  };
+  locations_services: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `locations.id`.<fk table='locations' column='id'/>
+     */
+    location_id: number;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `services.id`.<fk table='services' column='id'/>
+     */
+    service_id: number;
+  };
   programs: {
     /**
      * Format: bigint
@@ -557,6 +1061,27 @@ export interface definitions {
      */
     department_id?: number;
   };
+  programs_services: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `programs.id`.<fk table='programs' column='id'/>
+     */
+    program_id: number;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `services.id`.<fk table='services' column='id'/>
+     */
+    service_id: number;
+  };
   services: {
     /**
      * Format: bigint
@@ -571,12 +1096,42 @@ export interface definitions {
     created_at?: string;
     /** Format: text */
     name: string;
+  };
+  tags: {
     /**
      * Format: bigint
      * @description Note:
-     * This is a Foreign Key to `programs.id`.<fk table='programs' column='id'/>
+     * This is a Primary Key.<pk/>
      */
-    program_id?: number;
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name: string;
+  };
+  tags_services: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `tags.id`.<fk table='tags' column='id'/>
+     */
+    tag_id: number;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `services.id`.<fk table='services' column='id'/>
+     */
+    service_id: number;
   };
 }
 
@@ -639,6 +1194,22 @@ export interface parameters {
   "rowFilter.locations.name": string;
   /** Format: text */
   "rowFilter.locations.address": string;
+  /** @description locations_amenities */
+  "body.locations_amenities": definitions["locations_amenities"];
+  /** Format: timestamp with time zone */
+  "rowFilter.locations_amenities.created_at": string;
+  /** Format: bigint */
+  "rowFilter.locations_amenities.location_id": string;
+  /** Format: bigint */
+  "rowFilter.locations_amenities.amenity_id": string;
+  /** @description locations_services */
+  "body.locations_services": definitions["locations_services"];
+  /** Format: timestamp with time zone */
+  "rowFilter.locations_services.created_at": string;
+  /** Format: bigint */
+  "rowFilter.locations_services.location_id": string;
+  /** Format: bigint */
+  "rowFilter.locations_services.service_id": string;
   /** @description programs */
   "body.programs": definitions["programs"];
   /** Format: bigint */
@@ -649,6 +1220,14 @@ export interface parameters {
   "rowFilter.programs.name": string;
   /** Format: bigint */
   "rowFilter.programs.department_id": string;
+  /** @description programs_services */
+  "body.programs_services": definitions["programs_services"];
+  /** Format: timestamp with time zone */
+  "rowFilter.programs_services.created_at": string;
+  /** Format: bigint */
+  "rowFilter.programs_services.program_id": string;
+  /** Format: bigint */
+  "rowFilter.programs_services.service_id": string;
   /** @description services */
   "body.services": definitions["services"];
   /** Format: bigint */
@@ -657,8 +1236,22 @@ export interface parameters {
   "rowFilter.services.created_at": string;
   /** Format: text */
   "rowFilter.services.name": string;
+  /** @description tags */
+  "body.tags": definitions["tags"];
   /** Format: bigint */
-  "rowFilter.services.program_id": string;
+  "rowFilter.tags.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.tags.created_at": string;
+  /** Format: text */
+  "rowFilter.tags.name": string;
+  /** @description tags_services */
+  "body.tags_services": definitions["tags_services"];
+  /** Format: timestamp with time zone */
+  "rowFilter.tags_services.created_at": string;
+  /** Format: bigint */
+  "rowFilter.tags_services.tag_id": string;
+  /** Format: bigint */
+  "rowFilter.tags_services.service_id": string;
 }
 
 export interface operations {}
