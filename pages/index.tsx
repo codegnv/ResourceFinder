@@ -7,10 +7,26 @@ export default function Home() {
   useEffect(() => {
     const getAuth = async () => {
 
-      const data = await supabase
-      .from<definitions['programs']>('programs')
-      .select('*')
-      console.log("PROGRAMS: " + JSON.stringify(data.data))
+     // departments
+     // services
+     // tags = categories
+     // programs
+
+      // 1a) Get a list of amenities
+      const { data, error } = await supabase
+        .rpc('amenity_list')
+      // 1b) Loop through amenities, get their locations
+      if (!error && data) {
+        data.forEach(function (amenity) {
+          console.log(amenity.name)
+          amenity.locations.forEach(function (location: definitions['locations']) {
+            console.log("\t" + location.name)
+          })
+        })
+      }
+
+      // 2a)
+
     }
     getAuth()
   }, [])
