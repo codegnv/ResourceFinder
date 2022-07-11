@@ -2,9 +2,11 @@ This is a [Next.js](https://nextjs.org/) project using [TypeScript](https://www.
 
 [Volta](https://volta.sh/) is used to manage versions of JS tools.
 
-Styling is provided by [Emotion]https://emotion.sh/.
+Styling is provided by [Emotion](https://emotion.sh/).
 
-The database is using [MongoDB](https://www.mongodb.com/) and is accessed via [Mongoose](https://mongoosejs.com/).
+The database is using [Supabase](https://supabase.com/).
+
+State managements is handled via [Redux Toolkit](https://redux-toolkit.js.org/) and external data requests are handled with [RTK Query](https://redux-toolkit.js.org/rtk-query/overview).
 
 Translation strings are handled by [next-translate](https://www.npmjs.com/package/next-translate) and are currently only kept in the `common` context.
 
