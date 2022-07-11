@@ -7,9 +7,6 @@ export default function Home() {
   useEffect(() => {
     const getAuth = async () => {
 
-     // departments
-     // tags = categories
-     // programs
       // 1a) Get a list of amenities
       var { data, error } = await supabase.rpc('amenity_list')
 
@@ -26,7 +23,7 @@ export default function Home() {
       // 2a) Get a list of services
       var { data, error } = await supabase.rpc('service_list')
 
-      // 1b) Loop through services, get their programs and tags
+      // 2b) Loop through services, get their programs and tags
       if (!error && data) {
         data.forEach(function (service) {
           console.log(service.name)
@@ -41,6 +38,29 @@ export default function Home() {
         })
       }
 
+      // 3a) Get a list of programs
+      var { data, error } = await supabase.rpc('program_list')
+
+      // 3b) Loop through programs, get their department and services
+      if (!error && data) {
+        data.forEach(function (program) {
+          console.log(program.name)
+          console.log("\tdepartment: " + program.department)
+          console.log("\tservices:")
+          program.services.forEach(function (service: definitions['services']) {
+            console.log("\t\t" + service.name)
+          })
+        })
+      }
+
+      // 4) Get a list of tags (categories)
+      var result = await supabase.from<definitions['tags']>('tags').select('*')
+      if (!result.error && result.data) {
+        const tags = result.data
+        tags.forEach(function (tag) {
+          console.log(tag.name, tag.preferred)
+        })
+      }
     }
     getAuth()
   }, [])
