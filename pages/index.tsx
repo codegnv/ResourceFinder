@@ -62,7 +62,7 @@ export default function Home() {
         })
       }
 
-      // 4) Get a list of departments
+      // 5) Get a list of departments
       var result2 = await supabase.from<definitions['departments']>('departments').select('*')
       if (!result.error && result2.data) {
         const departments = result.data
