@@ -16,86 +16,13 @@ const StyledContent = styled.div`
   padding: 25px;
   position: absolute;
 `
-const tempTagsForTesting = [
-  {
-    label: 'Adult',
-  },
-  {
-    label: 'After School',
-  },
-  {
-    label: 'Art',
-  },
-  {
-    label: 'Camp',
-  },
-  {
-    label: 'Certification',
-  },
-  {
-    label: 'Day Camp',
-  },
-  {
-    label: 'Education',
-  },
-  {
-    label: 'Employment',
-  },
-  {
-    label: 'Adult',
-  },
-  {
-    label: 'After School',
-  },
-  {
-    label: 'Art',
-  },
-  {
-    label: 'Camp',
-  },
-  {
-    label: 'Certification',
-  },
-  {
-    label: 'Day Camp',
-  },
-  {
-    label: 'Education',
-  },
-  {
-    label: 'Employment',
-  },
-  {
-    label: 'Adult',
-  },
-  {
-    label: 'After School',
-  },
-  {
-    label: 'Art',
-  },
-  {
-    label: 'Camp',
-  },
-  {
-    label: 'Certification',
-  },
-  {
-    label: 'Day Camp',
-  },
-  {
-    label: 'Education',
-  },
-  {
-    label: 'Employment',
-  },
-]
+
 function Content({ label, selected }: IContentProps) {
   if (!selected) return null
   return (
     <StyledContent>
       <ContentHeader />
-      {label === 'Categories' && <Tags tags={tempTagsForTesting} />}
+      {label === 'Categories' && <Tags />}
       <ContentFooter />
     </StyledContent>
   )
