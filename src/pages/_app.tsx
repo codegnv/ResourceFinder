@@ -3,6 +3,8 @@ import emotionReset from 'emotion-reset'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import { ThemeProvider } from '@emotion/react'
+import { Provider } from 'react-redux'
+import { store } from '../services/store'
 
 const theme = {
   colors: {
@@ -40,11 +42,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         `}
       />
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </Provider>
     </>
   )
 }

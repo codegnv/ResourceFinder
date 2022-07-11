@@ -2,7 +2,11 @@ import styled from '@emotion/styled'
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
 
 export interface ITagProps {
-  label: string
+  tag: {
+    id: number
+    name: string
+    preferred: boolean
+  }
   selected: boolean
   onClick: (value: string) => void
 }
@@ -25,10 +29,10 @@ const StyledLabel = styled.span`
   margin-right: 4px;
 `
 
-function Tag({ label, selected, onClick }: ITagProps) {
+function Tag({ tag: { name }, selected, onClick }: ITagProps) {
   return (
-    <StyledTag onClick={() => onClick(label)} selected={selected}>
-      <StyledLabel>{label}</StyledLabel>
+    <StyledTag onClick={() => onClick(name)} selected={selected}>
+      <StyledLabel>{name}</StyledLabel>
       {selected ? <AiOutlineClose /> : <AiOutlinePlus />}
     </StyledTag>
   )
