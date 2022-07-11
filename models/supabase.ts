@@ -769,6 +769,7 @@ export interface paths {
           id?: parameters["rowFilter.tags.id"];
           created_at?: parameters["rowFilter.tags.created_at"];
           name?: parameters["rowFilter.tags.name"];
+          preferred?: parameters["rowFilter.tags.preferred"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -822,6 +823,7 @@ export interface paths {
           id?: parameters["rowFilter.tags.id"];
           created_at?: parameters["rowFilter.tags.created_at"];
           name?: parameters["rowFilter.tags.name"];
+          preferred?: parameters["rowFilter.tags.preferred"];
         };
         header: {
           /** Preference */
@@ -839,6 +841,7 @@ export interface paths {
           id?: parameters["rowFilter.tags.id"];
           created_at?: parameters["rowFilter.tags.created_at"];
           name?: parameters["rowFilter.tags.name"];
+          preferred?: parameters["rowFilter.tags.preferred"];
         };
         body: {
           /** tags */
@@ -945,6 +948,23 @@ export interface paths {
       responses: {
         /** No Content */
         204: never;
+      };
+    };
+  };
+  "/rpc/service_list": {
+    post: {
+      parameters: {
+        body: {
+          args: { [key: string]: unknown };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
       };
     };
   };
@@ -1128,6 +1148,11 @@ export interface definitions {
     created_at?: string;
     /** Format: text */
     name: string;
+    /**
+     * Format: boolean
+     * @default false
+     */
+    preferred: boolean;
   };
   tags_services: {
     /**
@@ -1261,6 +1286,8 @@ export interface parameters {
   "rowFilter.tags.created_at": string;
   /** Format: text */
   "rowFilter.tags.name": string;
+  /** Format: boolean */
+  "rowFilter.tags.preferred": string;
   /** @description tags_services */
   "body.tags_services": definitions["tags_services"];
   /** Format: timestamp with time zone */

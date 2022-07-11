@@ -8,13 +8,11 @@ export default function Home() {
     const getAuth = async () => {
 
      // departments
-     // services
      // tags = categories
      // programs
-
       // 1a) Get a list of amenities
-      const { data, error } = await supabase
-        .rpc('amenity_list')
+      var { data, error } = await supabase.rpc('amenity_list')
+
       // 1b) Loop through amenities, get their locations
       if (!error && data) {
         data.forEach(function (amenity) {
@@ -25,7 +23,23 @@ export default function Home() {
         })
       }
 
-      // 2a)
+      // 2a) Get a list of services
+      var { data, error } = await supabase.rpc('service_list')
+
+      // 1b) Loop through services, get their programs and tags
+      if (!error && data) {
+        data.forEach(function (service) {
+          console.log(service.name)
+          console.log("\tprograms:")
+          service.programs.forEach(function (program: definitions['programs']) {
+            console.log("\t\t" + program.name)
+          })
+          console.log("\ttags:")
+          service.tags.forEach(function (tag: definitions['tags']) {
+            console.log("\t\t" + tag.name)
+          })
+        })
+      }
 
     }
     getAuth()
