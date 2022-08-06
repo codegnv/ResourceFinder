@@ -1,6 +1,7 @@
 //content
 import styled from '@emotion/styled'
 import Tags from '../../Tags'
+import Checkboxes from '../../Checkboxes'
 import ContentFooter from './ContentFooter'
 import ContentHeader from './ContentHeader'
 
@@ -22,7 +23,8 @@ function Content({ label, selected }: IContentProps) {
   return (
     <StyledContent>
       <ContentHeader />
-      {label === 'categories' && <Tags />}
+      {label === 'Categories' && <Tags />}
+      {label === 'Departments' && <Checkboxes />}
       <ContentFooter />
     </StyledContent>
   )
