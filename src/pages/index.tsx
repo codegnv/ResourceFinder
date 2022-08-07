@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Results from '../components/Results'
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.svg' />
       </Head>
       <main>
-        <h1>Resource Finder</h1>
+        <Results />
       </main>
     </div>
   )

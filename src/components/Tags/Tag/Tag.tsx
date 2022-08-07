@@ -24,6 +24,8 @@ const StyledTag = styled.button<Pick<ITagProps, 'selected'>>`
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
+  font-size: 17px;
+  line-height: 17px;
 `
 const StyledLabel = styled.span`
   margin-right: 4px;
