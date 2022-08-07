@@ -14,17 +14,28 @@ export const api = createApi({
     }),
     getAllServices: builder.query({
       queryFn: async () => {
-        const data = await supabase.from('services')
+        const data = await supabase.rpc('service_list')
         return { data }
       },
     }),
     getAllTags: builder.query({
       queryFn: async () => {
-        const data = await supabase.from('tags').select('id, name')
+        const data = await supabase.from('tags')
+        return { data }
+      },
+    }),
+    getAllPrograms: builder.query({
+      queryFn: async () => {
+        const data = await supabase.rpc('program_list')
         return { data }
       },
     }),
   }),
 })
 
-export const { useGetAllDepartmentsQuery, useGetAllServicesQuery, useGetAllTagsQuery } = api
+export const {
+  useGetAllDepartmentsQuery,
+  useGetAllProgramsQuery,
+  useGetAllServicesQuery,
+  useGetAllTagsQuery,
+} = api

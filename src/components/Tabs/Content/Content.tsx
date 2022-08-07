@@ -22,7 +22,7 @@ function Content({ label, selected }: IContentProps) {
   return (
     <StyledContent>
       <ContentHeader />
-      {label === 'Categories' && <Tags />}
+      {label === 'categories' && <Tags />}
       <ContentFooter />
     </StyledContent>
   )

@@ -1,5 +1,4 @@
 import { css, Global } from '@emotion/react'
-import emotionReset from 'emotion-reset'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import { ThemeProvider } from '@emotion/react'
@@ -25,10 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global
         styles={css`
           @import url('https://fonts.googleapis.com/css2?family=Inter&family=Pontano+Sans&display=swap');
-          ${emotionReset}
 
           html {
             font-family: 'Inter';
+            font-size: 14px;
+            line-height: 22px;
             color: ${theme.colors.base};
           }
 
@@ -38,7 +38,19 @@ function MyApp({ Component, pageProps }: AppProps) {
             box-sizing: border-box;
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4 {
+            font-family: 'Pontano Sans';
+            font-weight: 400;
+          }
+
+          h2 {
+            font-size: 20px;
+            line-height: 24px;
           }
         `}
       />

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import useTranslation from 'next-translate/useTranslation'
 import { useState } from 'react'
 import Content from './Content'
 import Tab from './Tab'
@@ -17,8 +18,9 @@ const StyledContent = styled.div`
 `
 
 function Tabs({}: ITabsProps) {
+  const { t } = useTranslation('common')
   const [selectedTab, setSelectedTab] = useState<number | undefined>(undefined)
-  const tabNames = ['Categories', 'Departments', 'Criteria']
+  const tabNames = ['categories', 'departments', 'criteria']
   const handleTabClick = (i: number) => {
     if (selectedTab === i) return setSelectedTab(undefined)
     setSelectedTab(i)
@@ -29,7 +31,7 @@ function Tabs({}: ITabsProps) {
         {tabNames.map((tabName, i) => (
           <Tab
             fullWidth
-            label={tabName}
+            label={t(tabName)}
             key={tabName}
             selected={selectedTab === i}
             onClick={() => handleTabClick(i)}

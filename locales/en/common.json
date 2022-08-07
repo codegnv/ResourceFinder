@@ -1,4 +1,9 @@
 {
-  "siteTitle": "Resource Finder",
-  "title": "asdasdasd"
+  "categories": "Categories",
+  "criteria": "Criteria",
+  "departments": "Departments",
+  "error": "Oh no! An error has occurred",
+  "loading": "Loading...",
+  "noResults": "No Results!",
+  "siteTitle": "Resource Finder"
 }

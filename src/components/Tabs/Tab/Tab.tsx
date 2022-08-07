@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 export interface ITabProps {
   label: string
@@ -13,6 +13,8 @@ const StyledTab = styled.button<Pick<ITabProps, 'fullWidth' | 'selected'>>`
   border: 0.5px solid ${props => props.theme.colors.gray};
   padding: 10px 12px;
   font-size: 14px;
+  line-height: 14px;
+  font-weight: 600;
   flex-grow: ${props => (props.fullWidth ? '1' : undefined)};
   color: ${props => (props.selected ? props.theme.colors.baseLight : props.theme.colors.base)};
   background-color: ${props => (props.selected ? props.theme.colors.primary : props.theme.colors.ltGray)};
@@ -35,7 +37,7 @@ function Tab({ label, fullWidth, selected, onClick }: ITabProps) {
     <>
       <StyledTab fullWidth={fullWidth} onClick={onClick} selected={selected}>
         <StyledLabel>{label}</StyledLabel>
-        {selected ? <AiOutlineUp /> : <AiOutlineDown />}
+        {selected ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </StyledTab>
     </>
   )
