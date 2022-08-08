@@ -37,11 +37,13 @@ function Results({}: Props) {
   const ResultsItems = data.data.map(item => (
     <Item
       name={item.name}
+      criteria={item.criteria}
       description={
+        item.description ||
         'Lorem ipsum ut eu non esse laboris sint exercitation commodo consectetur dolor ipsum. Fugiat ut ea ea excepteur exercitation. Proident excepteur incididunt irure cillum sit laboris sit deserunt et cillum officia sit excepteur.'
       }
-      program={item.programs[0].name}
-      department={'DEPT'}
+      programs={item.programs}
+      departments={item.departments}
       key={item.name}
     />
   ))
