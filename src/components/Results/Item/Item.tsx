@@ -5,10 +5,10 @@ import { SmHrLine } from '../../HrLine'
 
 export interface IItemProps {
   name: string
-  criteria?: string[]
+  criteria?: Array<string>
   description: string
-  departments: []
-  programs: [] | string[]
+  departments: Array<any>
+  programs: Array<any>
 }
 
 const StyledHeader = styled.h2`
