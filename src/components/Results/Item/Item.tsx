@@ -1,13 +1,14 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { dedupeArray } from '../../../utils/arrays'
 import { SmHrLine } from '../../HrLine'
 
 export interface IItemProps {
   name: string
   criteria?: string[]
-  description?: string
-  department?: string
-  program?: string
+  description: string
+  departments: []
+  programs: [] | string[]
 }
 
 const StyledHeader = styled.h2`
@@ -29,18 +30,41 @@ const StyledAttibuteHeader = styled.span`
   font-weight: 700;
 `
 
-function Item(item: IItemProps) {
+function Item({ name, criteria, description, departments, programs }: IItemProps) {
+  const departmentNames = departments.map((department: any) => department.name)
+  const departmentsList = (
+    <div>
+      {dedupeArray(departmentNames).map(departmentNames => (
+        <div key={departmentNames}>{departmentNames}</div>
+      ))}
+    </div>
+  )
+
+  const programNames = programs.map((program: any) => program.name)
+  const programsList = (
+    <div>
+      {dedupeArray(programNames).map(programNames => (
+        <div key={programNames}>{programNames}</div>
+      ))}
+    </div>
+  )
+
+  const criteriaList = (
+    <div>{criteria && criteria.map(criteriaName => <div key={criteriaName}>{criteriaName}</div>)}</div>
+  )
+
   return (
     <section>
-      <StyledHeader>{item.name}</StyledHeader>
-      <StyledDescription>{item.description}</StyledDescription>
+      <StyledHeader>{name}</StyledHeader>
+      <StyledDescription>{description}</StyledDescription>
       <StyledAttributes>
-        <StyledAttibuteHeader>Offered by: </StyledAttibuteHeader> {item.department}
-        <StyledAttibuteHeader>Part of: </StyledAttibuteHeader> {item.program}
-        <StyledAttibuteHeader>Criteria: </StyledAttibuteHeader>
-        {item.criteria?.map(criteria => (
-          <p key={criteria}>criteria</p>
-        ))}
+        <StyledAttibuteHeader>Offered by: </StyledAttibuteHeader> {departmentsList}
+        <StyledAttibuteHeader>Part of: </StyledAttibuteHeader> {programsList}
+        {criteria && (
+          <>
+            <StyledAttibuteHeader>Criteria: </StyledAttibuteHeader> {criteriaList}
+          </>
+        )}
       </StyledAttributes>
       <SmHrLine />
     </section>
