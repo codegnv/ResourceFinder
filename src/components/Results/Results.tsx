@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
 import { useGetAllServicesQuery } from '../../services/api'
+import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../Status'
+import { selectedTags } from '../Tags/tagsSlice'
 import ResultsHeader from './Header'
 import Item from './Item'
+import { ITag } from './types'
 
 type Props = {}
 
@@ -11,7 +14,8 @@ const StyledResults = styled.section`
 `
 
 function Results({}: Props) {
-  const { data, isError, isLoading } = useGetAllServicesQuery('')
+  const tagSelection = useAppSelector(selectedTags)
+  const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
 
   if (isError)
     return (
@@ -27,14 +31,19 @@ function Results({}: Props) {
       </StyledResults>
     )
 
-  if (!data?.data)
+  const filteredByTagData =
+    tagSelection.length > 0 && data?.body
+      ? data.body.filter(item => item.tags.some((tag: ITag) => tagSelection.includes(tag.name)))
+      : data?.body
+
+  if (!filteredByTagData || filteredByTagData?.length === 0)
     return (
       <StyledResults>
         <NoResultsState />
       </StyledResults>
     )
 
-  const ResultsItems = data.data.map(item => (
+  const ResultsItems = filteredByTagData.map(item => (
     <Item
       name={item.name}
       criteria={item.criteria}
@@ -50,7 +59,7 @@ function Results({}: Props) {
 
   return (
     <StyledResults>
-      <ResultsHeader begin={1} end={data.data.length} total={data.data.length} />
+      <ResultsHeader begin={1} end={filteredByTagData.length} total={filteredByTagData.length} />
       {ResultsItems}
     </StyledResults>
   )
