@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
 import { useGetAllDepartmentsQuery, useGetAllServicesQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
-import Loader from '../Loader'
+import { LoaderState }from '../Status'
 import Checkbox from './Checkbox'
 import { selectedCheckboxes, toggleCheckboxSelection } from './checkboxesSlice'
 
@@ -30,7 +30,7 @@ function Tags() {
       {isError ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <Loader />
+        <LoaderState />
       ) : data ? (
         data?.data?.map(checkbox => (
           <Checkbox key={checkbox.id} checkbox={checkbox} selected={checkboxSelection.includes(checkbox.name)} onClick={handleOnClick} />

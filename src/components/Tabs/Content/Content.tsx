@@ -23,8 +23,8 @@ function Content({ label, selected }: IContentProps) {
   return (
     <StyledContent>
       <ContentHeader />
-      {label === 'Categories' && <Tags />}
-      {label === 'Departments' && <Checkboxes />}
+      {label === 'categories' && <Tags />}
+      {label === 'departments' && <Checkboxes />}
       <ContentFooter />
     </StyledContent>
   )
