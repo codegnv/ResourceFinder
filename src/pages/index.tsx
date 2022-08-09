@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from 'next/head'
 import Results from '../components/Results'
+import { useGetAllTagsQuery, useGetAllServicesQuery } from '../services/api'
 
 export default function Home() {
+  const tempTestGrabberForTags = useGetAllTagsQuery(undefined)
+  const tempTestGrabberForServices = useGetAllServicesQuery(undefined)
+
   return (
     <div>
       <Head>

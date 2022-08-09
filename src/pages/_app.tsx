@@ -18,6 +18,7 @@ const theme = {
   },
 }
 
+// TODO: Add fonts to theme and provide fallbacks
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

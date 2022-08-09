@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { useGetAllServicesQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
-import { ErrorState, LoaderState, NoResultsState } from '../Status'
-import { selectedTags } from '../Tags/tagsSlice'
-import ResultsHeader from './Header'
-import Item from './Item'
+import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
+import { selectedCategories } from '../Tabs/Categories/categoriesSlice'
+import ResultsHeader from './ResultsHeader'
+import ResultsItem from './ResultsItem'
 import { ITag } from './types'
 
 type Props = {}
@@ -14,7 +14,7 @@ const StyledResults = styled.section`
 `
 
 function Results({}: Props) {
-  const tagSelection = useAppSelector(selectedTags)
+  const tagSelection = useAppSelector(selectedCategories)
   const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
 
   if (isError)
@@ -44,7 +44,7 @@ function Results({}: Props) {
     )
 
   const ResultsItems = filteredByTagData.map(item => (
-    <Item
+    <ResultsItem
       name={item.name}
       criteria={item.criteria}
       description={

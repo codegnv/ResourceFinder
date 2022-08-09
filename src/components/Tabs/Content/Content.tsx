@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
-import Tags from '../../Tags'
-import ContentFooter from './ContentFooter'
-
+import Categories from '../Categories'
 export interface IContentProps {
   label: string
   selected: boolean
@@ -17,11 +15,6 @@ const StyledContent = styled.div`
 
 function Content({ label, selected }: IContentProps) {
   if (!selected) return null
-  return (
-    <StyledContent>
-      {label === 'categories' && <Tags />}
-      <ContentFooter />
-    </StyledContent>
-  )
+  return <StyledContent>{label === 'categories' && <Categories />}</StyledContent>
 }
 export default Content
