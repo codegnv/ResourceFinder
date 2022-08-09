@@ -20,11 +20,14 @@ export const tagsSlice = createSlice({
         state.selectedTags = [...state.selectedTags, action.payload]
       }
     },
+    clearTagSelection: state => {
+      state.selectedTags = []
+    },
   },
 })
 
 // Here we are just exporting the actions from this slice, so that we can call them anywhere in our app.
-export const { toggleTagSelection } = tagsSlice.actions
+export const { clearTagSelection, toggleTagSelection } = tagsSlice.actions
 
 // calling the above actions would be useless if we could not access the data in the state. So, we use something called a selector which allows us to select a value from the state.
 export const selectedTags = (state: RootState) => state.tags.selectedTags

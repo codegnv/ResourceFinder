@@ -10,7 +10,13 @@ export interface ITabProps {
 
 const StyledTab = styled.button<Pick<ITabProps, 'fullWidth' | 'selected'>>`
   height: 36px;
-  border: 0.5px solid ${props => props.theme.colors.gray};
+  &:first-of-type {
+    border-left: 0.5px solid ${props => props.theme.colors.gray};
+  }
+  border-top: 0.5px solid ${props => props.theme.colors.gray};
+  border-bottom: 0.5px solid ${props => props.theme.colors.gray};
+  border-right: 0.5px solid ${props => props.theme.colors.gray};
+  border-left: 0.5px solid transparent;
   padding: 10px 12px;
   font-size: 14px;
   line-height: 14px;

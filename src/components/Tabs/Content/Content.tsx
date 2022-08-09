@@ -1,8 +1,6 @@
-//content
 import styled from '@emotion/styled'
 import Tags from '../../Tags'
 import ContentFooter from './ContentFooter'
-import ContentHeader from './ContentHeader'
 
 export interface IContentProps {
   label: string
@@ -13,7 +11,7 @@ const StyledContent = styled.div`
   width: 100%;
   min-height: 200px;
   background-color: ${props => props.theme.colors.ltGray};
-  padding: 25px;
+  padding: 24px;
   position: absolute;
 `
 
@@ -21,7 +19,6 @@ function Content({ label, selected }: IContentProps) {
   if (!selected) return null
   return (
     <StyledContent>
-      <ContentHeader />
       {label === 'categories' && <Tags />}
       <ContentFooter />
     </StyledContent>

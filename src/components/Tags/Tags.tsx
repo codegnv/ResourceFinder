@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useGetAllTagsQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../Status'
+import ContentHeader from '../Tabs/Content/ContentHeader'
 import Tag from './Tag'
-import { selectedTags, toggleTagSelection } from './tagsSlice'
+import { clearTagSelection, selectedTags, toggleTagSelection } from './tagsSlice'
 
 const StyledTags = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const StyledTags = styled.div`
   gap: 16px;
   margin-bottom: 25px;
   max-height: 250px;
-  overflow-x: scroll;
+  overflow-y: scroll;
 `
 
 function Tags() {
@@ -23,6 +24,10 @@ function Tags() {
 
   const handleOnClick = (value: string) => {
     dispatch(toggleTagSelection(value))
+  }
+
+  const handleOnClear = () => {
+    dispatch(clearTagSelection())
   }
 
   if (isError)
@@ -50,6 +55,11 @@ function Tags() {
     <Tag key={tag.id} tag={tag} selected={tagSelection.includes(tag.name)} onClick={handleOnClick} />
   ))
 
-  return <StyledTags>{ResultsItems}</StyledTags>
+  return (
+    <>
+      <ContentHeader count={tagSelection.length} onClear={handleOnClear} />
+      <StyledTags>{ResultsItems}</StyledTags>
+    </>
+  )
 }
 export default Tags
