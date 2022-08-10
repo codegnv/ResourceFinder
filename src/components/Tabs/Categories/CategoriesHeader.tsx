@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import useTranslation from 'next-translate/useTranslation'
 import Button from '../../shared/Button'
 
 export interface ICategoriesHeaderProps {
@@ -16,12 +17,13 @@ const StyledRow = styled.div`
 `
 
 function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
+  const { t } = useTranslation('common')
   return (
     <StyledCategoriesHeader>
       <StyledRow>
-        {count} items selected
+        {t('selectedItems', { count })}
         <Button onClick={onClear} variant='text'>
-          Clear Filters
+          {t('clearFilters')}
         </Button>
       </StyledRow>
       <hr />

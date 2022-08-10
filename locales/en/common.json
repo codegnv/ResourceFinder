@@ -1,9 +1,14 @@
 {
   "categories": "Categories",
+  "clearFilters": "Clear Filters",
   "criteria": "Criteria",
   "departments": "Departments",
   "error": "Oh no! An error has occurred",
   "loading": "Loading...",
   "noResults": "No Results!",
+  "seeResults": "See Results",
+  "selectedItems_0": "No items selected",
+  "selectedItems_one": "{{count}} item selected",
+  "selectedItems_other": "{{count}} items selected",
   "siteTitle": "Resource Finder"
 }
