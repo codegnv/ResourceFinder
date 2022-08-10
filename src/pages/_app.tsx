@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react'
 import { Provider } from 'react-redux'
 import { store } from '../services/store'
 
-const theme = {
+export const theme = {
   colors: {
     primary: '#676cc8',
     secondary: '#1dc2ae',
@@ -18,6 +18,7 @@ const theme = {
   },
 }
 
+// TODO: Add fonts to theme and provide fallbacks
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

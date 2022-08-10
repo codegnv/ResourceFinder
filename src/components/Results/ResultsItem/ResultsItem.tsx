@@ -1,9 +1,8 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import { dedupeArray } from '../../../utils/arrays'
-import { SmHrLine } from '../../HrLine'
+import { SmHrLine } from '../../shared/HrLine'
 
-export interface IItemProps {
+export interface IResultsItemProps {
   name: string
   criteria?: Array<string>
   description: string
@@ -30,7 +29,7 @@ const StyledAttibuteHeader = styled.span`
   font-weight: 700;
 `
 
-function Item({ name, criteria, description, departments, programs }: IItemProps) {
+function ResultsItem({ name, criteria, description, departments, programs }: IResultsItemProps) {
   const departmentNames = departments.map((department: any) => department.name)
   const departmentsList = (
     <div>
@@ -71,4 +70,4 @@ function Item({ name, criteria, description, departments, programs }: IItemProps
   )
 }
 
-export default Item
+export default ResultsItem

@@ -1,10 +1,10 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import tagsReducer from '../components/Tags/tagsSlice'
+import categoriesReducer from '../components/Tabs/Categories/categoriesSlice'
 import { api } from './api'
 
 export const store = configureStore({
   reducer: {
-    tags: tagsReducer,
+    categories: categoriesReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: gDM => gDM().concat(api.middleware),

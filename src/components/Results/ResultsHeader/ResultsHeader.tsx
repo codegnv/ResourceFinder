@@ -1,4 +1,4 @@
-import { MedHrLine } from '../../HrLine'
+import { MedHrLine } from '../../shared/HrLine'
 
 export interface IResultsHeaderProps {
   begin: number
