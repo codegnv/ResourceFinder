@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { CgArrowLongRight } from 'react-icons/cg'
 
 export interface IButtonProps {
   children?: React.ReactNode
@@ -33,7 +34,7 @@ const StyledButton = styled.button<Pick<IButtonProps, 'variant'>>(({ variant = '
       background: 'transparent',
       border: 'none',
       color: theme.colors.primary,
-      minWidth: 'unset',
+      minWidth: '260px',
       padding: '0',
     },
   }
@@ -52,13 +53,20 @@ const StyledButton = styled.button<Pick<IButtonProps, 'variant'>>(({ variant = '
   min-width: ${style.minWidth};
   letter-spacing: 1.89px;
   cursor: pointer;
+  display: ${variant === 'arrowText' ? 'flex' : 'inline'};
+  align-items: ${variant === 'arrowText' ? 'center' : 'unset'};
 `
 })
 
 function Button({ children, onClick, variant, ...rest }: IButtonProps) {
+  const StyledIcon = styled(CgArrowLongRight)`
+    margin-left: 8px;
+    font-size: 24px;
+  `
   return (
     <StyledButton onClick={onClick} variant={variant} {...rest}>
       {children}
+      {variant === 'arrowText' && <StyledIcon />}
     </StyledButton>
   )
 }

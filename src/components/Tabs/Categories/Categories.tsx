@@ -8,6 +8,10 @@ import Tag from '../../shared/Tag'
 import { clearTagSelection, selectedCategories, toggleTagSelection } from './categoriesSlice'
 import CategoriesFooter from './CategoriesFooter'
 
+interface ICategoriesProps {
+  hideSelectedCount?: boolean
+}
+
 const StyledCategories = styled.div`
   display: flex;
   flex-direction: row;
@@ -18,7 +22,7 @@ const StyledCategories = styled.div`
   overflow-y: scroll;
 `
 
-function Categories() {
+function Categories({ hideSelectedCount }: ICategoriesProps) {
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useGetAllTagsQuery(undefined)
   const tagSelection = useAppSelector(selectedCategories)
@@ -58,7 +62,7 @@ function Categories() {
 
   return (
     <>
-      <CategoriesHeader count={tagSelection.length} onClear={handleOnClear} />
+      {!hideSelectedCount && <CategoriesHeader count={tagSelection.length} onClear={handleOnClear} />}
       <StyledCategories>{ResultsItems}</StyledCategories>
       <CategoriesFooter />
     </>

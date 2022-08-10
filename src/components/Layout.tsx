@@ -1,5 +1,4 @@
 import Header from './Header'
-import Tabs from './Tabs'
 
 type Props = {
   children: React.ReactNode
@@ -19,7 +18,6 @@ export default function Layout({ children }: Props) {
       }}
     >
       <Header />
-      <Tabs />
       <main style={{ height: '100%' }}>{children}</main>
     </div>
   )

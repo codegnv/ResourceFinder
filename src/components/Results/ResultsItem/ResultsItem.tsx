@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import { dedupeArray } from '../../../utils/arrays'
 import { SmHrLine } from '../../shared/HrLine'
 

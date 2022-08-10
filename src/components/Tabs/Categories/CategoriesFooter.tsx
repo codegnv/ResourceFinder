@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import Button from '../../shared/Button'
 
 export interface ICategoriesProps {}
@@ -13,11 +14,12 @@ const StyledCategories = styled.div`
 
 function Categories({}: ICategoriesProps) {
   const { t } = useTranslation('common')
+  const router = useRouter()
   return (
     <>
       <hr />
       <StyledCategories>
-        <Button>{t('seeResults')}</Button>
+        <Button onClick={() => router.push('/services')}>{t('seeResults')}</Button>
       </StyledCategories>
     </>
   )
