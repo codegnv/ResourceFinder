@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { GrCheckbox, GrClose } from 'react-icons/gr'
+import { GrClose } from 'react-icons/gr'
 
 export interface ICheckboxProps {
   checkbox: {
@@ -15,22 +15,37 @@ border: hidden;
 background-color: ${props => props.theme.colors.ltGray};
 border-radius: 5px;
 display: inline-flex;
-padding: 20px 10px;
+padding: 8px;
 justify-content: left;
-align-items: center;
+align-items: top;
 flex-direction: row;
-overflow: hidden;
-white-space: nowrap;
 cursor: pointer;
 `
 const StyledLabel = styled.span`
-  margin-left: 5px;
+  margin-left: 12px;
+  display: flex;
+  text-align: left;
+  font: normal normal normal 18px Pontano Sans;
+`
+
+// Add the border color later in theme
+const StyledBox = styled.div<Pick<ICheckboxProps, 'selected'>>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-color: ${props => (props.selected ? props.theme.colors.secondary : "white")};
+  border: ${props => (props.selected ? "none" : `#8D9297 1pt solid`)};;
 `
 
 function Checkbox({ checkbox: { name }, selected, onClick }: ICheckboxProps) {
   return (
     <StyledCheckbox onClick={() => onClick(name)} selected={selected}>
-      {selected ? <GrClose size='15px'/> : <GrCheckbox size='15px'/>}
+      <StyledBox selected ={selected}>
+      {selected && <GrClose size='17px'/>}
+      </StyledBox>
       <StyledLabel>{name}</StyledLabel>
     </StyledCheckbox>
   )
