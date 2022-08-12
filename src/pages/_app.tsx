@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Global
         styles={css`
-          @import url('https://fonts.googleapis.com/css2?family=Inter&family=Pontano+Sans&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Pontano+Sans&display=swap');
 
           html {
             font-family: 'Inter';

@@ -67,7 +67,7 @@ function Hero() {
         </StyledSeasonalText>
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
-        <Categories hideSelectedCount />
+        <Categories hideBottomDivider hideSelectedCount /* showOnlyMobilePreferred */ />
       </StyledBTF>
     </>
   )
