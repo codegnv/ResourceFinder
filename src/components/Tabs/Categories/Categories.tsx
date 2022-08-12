@@ -1,31 +1,29 @@
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
+import Tags from 'src/components/shared/Tags'
 import { useGetAllTagsQuery } from '../../../services/api'
 import { useAppSelector } from '../../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../../shared/Status'
+import CategoriesFooter, { ICategoriesFooterProps } from './CategoriesFooter'
 import CategoriesHeader from './CategoriesHeader'
-import Tag from '../../shared/Tag'
 import { clearTagSelection, selectedCategories, toggleTagSelection } from './categoriesSlice'
-import CategoriesFooter from './CategoriesFooter'
 
-interface ICategoriesProps {
+interface ICategoriesProps extends ICategoriesFooterProps {
   hideSelectedCount?: boolean
+  showOnlyDesktopPreferred?: boolean
+  showOnlyMobilePreferred?: boolean
 }
 
 const StyledCategories = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px;
   margin-bottom: 30px;
   max-height: 250px;
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
-function Categories({ hideSelectedCount }: ICategoriesProps) {
+function Categories({ hideBottomDivider, hideSelectedCount, showOnlyMobilePreferred }: ICategoriesProps) {
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useGetAllTagsQuery(undefined)
-  const tagSelection = useAppSelector(selectedCategories)
+  const selectedTags = useAppSelector(selectedCategories)
 
   const handleOnClick = (value: string) => {
     dispatch(toggleTagSelection(value))
@@ -56,15 +54,15 @@ function Categories({ hideSelectedCount }: ICategoriesProps) {
       </StyledCategories>
     )
 
-  const ResultsItems = data.data.map(tag => (
-    <Tag key={tag.id} tag={tag} selected={tagSelection.includes(tag.name)} onClick={handleOnClick} />
-  ))
+  const filteredTags = showOnlyMobilePreferred ? data.data.filter(tag => tag.preferred) : data.data
 
   return (
     <>
-      {!hideSelectedCount && <CategoriesHeader count={tagSelection.length} onClear={handleOnClear} />}
-      <StyledCategories>{ResultsItems}</StyledCategories>
-      <CategoriesFooter />
+      {!hideSelectedCount && <CategoriesHeader count={selectedTags.length} onClear={handleOnClear} />}
+      <StyledCategories>
+        <Tags tags={filteredTags || data.data} selectedTags={selectedTags} onClick={handleOnClick} />
+      </StyledCategories>
+      <CategoriesFooter hideBottomDivider={hideBottomDivider} />
     </>
   )
 }
