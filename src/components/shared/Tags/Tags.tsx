@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import Tag from './Tag'
-import { ITag } from './Tag/Tag'
+import { Tag, ITag } from './Tag'
 
 interface ICategoriesProps {
   selectedTags: Array<string>
@@ -15,7 +14,7 @@ const StyledCategories = styled.div`
   gap: 16px;
 `
 
-function Tags({ selectedTags, tags, onClick }: ICategoriesProps) {
+export function Tags({ selectedTags, tags, onClick }: ICategoriesProps) {
   const ResultsItems = tags.map(tag => (
     <Tag key={tag.id} tag={tag} selected={selectedTags.includes(tag.name)} onClick={onClick} />
   ))
@@ -26,4 +25,3 @@ function Tags({ selectedTags, tags, onClick }: ICategoriesProps) {
     </>
   )
 }
-export default Tags

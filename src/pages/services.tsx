@@ -1,15 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from 'next/head'
-import Tabs from 'src/components/Tabs'
-import Results from '../components/Results'
-import { useGetAllTagsQuery, useGetAllServicesQuery } from '../services/api'
+import { Tabs } from 'src/components/Tabs'
+import { Results } from '../components/Results'
 
 function Services() {
-  const tempTestGrabberForTags = useGetAllTagsQuery(undefined)
-  const tempTestGrabberForServices = useGetAllServicesQuery(undefined)
-
   return (
-    <div>
+    <>
       <Head>
         <title>myGNV Resource Finder</title>
         <meta name='description' content='myGNV Resource Finder' />
@@ -20,7 +15,7 @@ function Services() {
       <main>
         <Results />
       </main>
-    </div>
+    </>
   )
 }
 

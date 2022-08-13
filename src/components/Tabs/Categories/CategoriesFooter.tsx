@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
-import Button from '../../shared/Button'
+import { Button } from '../../shared/Button'
 
 export interface ICategoriesFooterProps {
   hideBottomDivider?: boolean
+  onClick: () => void
 }
 
 const StyledCategoriesFooter = styled.div`
@@ -12,18 +12,16 @@ const StyledCategoriesFooter = styled.div`
   justify-content: center;
   margin-top: 20px;
 `
-//TODO: Tabs needs to move from context to redux to get action to button
 
-function CategoriesFooter({ hideBottomDivider }: ICategoriesFooterProps) {
+export function CategoriesFooter({ hideBottomDivider, onClick }: ICategoriesFooterProps) {
   const { t } = useTranslation('common')
-  const router = useRouter()
+
   return (
     <>
       {!hideBottomDivider && <hr />}
       <StyledCategoriesFooter>
-        <Button onClick={() => router.push('/services')}>{t('seeResults')}</Button>
+        <Button onClick={onClick}>{t('seeResults')}</Button>
       </StyledCategoriesFooter>
     </>
   )
 }
-export default CategoriesFooter

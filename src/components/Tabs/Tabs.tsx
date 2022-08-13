@@ -1,10 +1,13 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import { useState } from 'react'
-import Content from './Content'
+import ClickAwayListener from 'react-click-away-listener'
+import { useDispatch } from 'react-redux'
+import { useAppSelector } from 'src/services/hooks'
+import { Content } from './Content'
 import Tab from './Tab'
+import { clearTabSelection, selectedTab, toggleTabSelection } from './tabsSlice'
 
-export interface ITabsProps {}
+const TAB_NAMES = ['categories', 'departments']
 
 const StyledTabs = styled.div`
   width: 100%;
@@ -17,34 +20,35 @@ const StyledContent = styled.div`
   position: relative;
 `
 
-function Tabs({}: ITabsProps) {
+export function Tabs() {
+  const dispatch = useDispatch()
   const { t } = useTranslation('common')
-  const [selectedTab, setSelectedTab] = useState<number | undefined>(undefined)
-  const tabNames = ['categories', 'departments', 'criteria']
-  const handleTabClick = (i: number) => {
-    if (selectedTab === i) return setSelectedTab(undefined)
-    setSelectedTab(i)
+  const visibleTab = useAppSelector(selectedTab)
+
+  const handleOnClearTabs = () => {
+    dispatch(clearTabSelection())
   }
+
   return (
-    <div>
-      <StyledTabs>
-        {tabNames.map((tabName, i) => (
-          <Tab
-            fullWidth
-            label={t(tabName)}
-            key={tabName}
-            selected={selectedTab === i}
-            onClick={() => handleTabClick(i)}
-          />
-        ))}
-      </StyledTabs>
-      <StyledContent>
-        {tabNames.map((tabName, i) => (
-          <Content key={tabName} label={tabName} selected={selectedTab === i} />
-        ))}
-      </StyledContent>
-    </div>
+    <ClickAwayListener onClickAway={handleOnClearTabs}>
+      <section>
+        <StyledTabs>
+          {TAB_NAMES.map(tabName => (
+            <Tab
+              fullWidth
+              label={t(tabName)}
+              key={tabName}
+              selected={visibleTab === tabName}
+              onClick={() => dispatch(toggleTabSelection(tabName))}
+            />
+          ))}
+        </StyledTabs>
+        <StyledContent>
+          {TAB_NAMES.map(tabName => (
+            <Content key={tabName} label={tabName} selected={visibleTab === tabName} />
+          ))}
+        </StyledContent>
+      </section>
+    </ClickAwayListener>
   )
 }
-
-export default Tabs

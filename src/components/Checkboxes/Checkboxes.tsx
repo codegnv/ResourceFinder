@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
-import { useGetAllDepartmentsQuery, useGetAllServicesQuery } from '../../services/api'
+import { useGetAllDepartmentsQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
-import { LoaderState }from '../shared/Status'
-import Checkbox from './Checkbox'
+import { LoaderState } from '../shared/Status'
+import { Checkbox } from './Checkbox'
 import { selectedCheckboxes, toggleCheckboxSelection } from './checkboxesSlice'
 
 const StyledCheckboxes = styled.div`
@@ -14,17 +14,15 @@ const StyledCheckboxes = styled.div`
   overflow-x: scroll;
 `
 
-function Tags() {
+export function Checkboxes() {
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useGetAllDepartmentsQuery('')
-  const gas = useGetAllServicesQuery('')
   const checkboxSelection = useAppSelector(selectedCheckboxes)
 
   const handleOnClick = (value: string) => {
     dispatch(toggleCheckboxSelection(value))
   }
 
-  console.log('getAllServices', gas)
   return (
     <StyledCheckboxes>
       {isError ? (
@@ -33,10 +31,14 @@ function Tags() {
         <LoaderState />
       ) : data ? (
         data?.data?.map(checkbox => (
-          <Checkbox key={checkbox.id} checkbox={checkbox} selected={checkboxSelection.includes(checkbox.name)} onClick={handleOnClick} />
+          <Checkbox
+            key={checkbox.id}
+            checkbox={checkbox}
+            selected={checkboxSelection.includes(checkbox.name)}
+            onClick={handleOnClick}
+          />
         ))
       ) : null}
     </StyledCheckboxes>
   )
 }
-export default Tags

@@ -1,1 +1,1 @@
-export { default } from './Tags'
+export { Tags } from './Tags'

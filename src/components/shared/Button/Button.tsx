@@ -1,10 +1,8 @@
 import styled from '@emotion/styled'
 import { CgArrowLongRight } from 'react-icons/cg'
 
-export interface IButtonProps {
-  children?: React.ReactNode
+export interface IButtonProps extends React.ComponentProps<'button'> {
   variant?: 'primary' | 'secondary' | 'text' | 'arrowText'
-  onClick?: () => void
 }
 
 const StyledButton = styled.button<Pick<IButtonProps, 'variant'>>(({ variant = 'primary', theme }) => {
@@ -77,22 +75,20 @@ const StyledButton = styled.button<Pick<IButtonProps, 'variant'>>(({ variant = '
   `
 })
 
-function Button({ children, onClick, variant, ...rest }: IButtonProps) {
+export function Button({ children, onClick, variant, ...rest }: IButtonProps) {
   const StyledIcon = styled(CgArrowLongRight)`
     font-size: 24px;
     margin-left: 8px;
   `
 
   return variant === 'arrowText' || variant === 'text' ? (
-    <StyledButton onClick={onClick} variant={variant} {...rest}>
+    <StyledButton onClick={onClick} variant={variant} type='button' {...rest}>
       <span data-content={children}>{children}</span>
       {variant === 'arrowText' && <StyledIcon />}
     </StyledButton>
   ) : (
-    <StyledButton onClick={onClick} variant={variant} {...rest}>
+    <StyledButton onClick={onClick} variant={variant} type='button' {...rest}>
       {children}
     </StyledButton>
   )
 }
-
-export default Button

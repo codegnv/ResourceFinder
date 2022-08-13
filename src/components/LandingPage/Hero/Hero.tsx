@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import Button from '../../shared/Button'
+import { Button } from '../../shared/Button'
 import summer from '../../../assets/summer.png'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { BsArrowDownCircle } from 'react-icons/bs'
-import Categories from 'src/components/Tabs/Categories'
+import { Categories } from 'src/components/Tabs/Categories'
 
 const StyledHero = styled.section`
   padding: 32px 24px;
@@ -45,7 +45,7 @@ const StyledSuggestion = styled.div`
   letter-spacing: 1.3px;
 `
 
-function Hero() {
+export function Hero() {
   const { t } = useTranslation('common')
   const router = useRouter()
   return (
@@ -67,10 +67,8 @@ function Hero() {
         </StyledSeasonalText>
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
-        <Categories hideBottomDivider hideSelectedCount /* showOnlyMobilePreferred */ />
+        <Categories variant='mobileMain' />
       </StyledBTF>
     </>
   )
 }
-
-export default Hero
