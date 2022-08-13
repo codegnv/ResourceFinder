@@ -10,7 +10,7 @@ const initialState: CheckboxesState = {
 }
 
 export const checkboxesSlice = createSlice({
-  name: 'checkboxes',
+name: 'checkboxes',
   initialState,
   reducers: {
     toggleCheckboxSelection: (state, action: PayloadAction<string>) => {
