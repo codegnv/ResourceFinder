@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import Button from '../../shared/Button'
+import { Button } from '../../shared/Button'
 
 export interface ICategoriesHeaderProps {
   count: number
@@ -16,7 +16,7 @@ const StyledRow = styled.div`
   margin-bottom: 20px;
 `
 
-function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
+export function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
   const { t } = useTranslation('common')
   return (
     <StyledCategoriesHeader>
@@ -30,4 +30,3 @@ function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
     </StyledCategoriesHeader>
   )
 }
-export default CategoriesHeader

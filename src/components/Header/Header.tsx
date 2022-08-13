@@ -1,11 +1,9 @@
-import Title from './Title'
+import { Title } from './Title'
 
-function Header() {
+export function Header() {
   return (
     <>
       <Title />
     </>
   )
 }
-
-export default Header

@@ -34,7 +34,7 @@ const StyledLabel = styled.span`
   margin-right: 4px;
 `
 
-function Tag({ tag, selected, onClick }: ITagProps) {
+export function Tag({ tag, selected, onClick }: ITagProps) {
   return (
     <StyledTag onClick={() => onClick(tag.name)} selected={selected}>
       <StyledLabel>{tag.name}</StyledLabel>
@@ -42,4 +42,3 @@ function Tag({ tag, selected, onClick }: ITagProps) {
     </StyledTag>
   )
 }
-export default Tag

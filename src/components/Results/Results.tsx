@@ -7,13 +7,11 @@ import ResultsHeader from './ResultsHeader'
 import ResultsItem from './ResultsItem'
 import { ITag } from './types'
 
-type Props = {}
-
 const StyledResults = styled.section`
   padding: 24px;
 `
 
-function Results({}: Props) {
+export function Results() {
   const tagSelection = useAppSelector(selectedCategories)
   const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
 
@@ -64,5 +62,3 @@ function Results({}: Props) {
     </StyledResults>
   )
 }
-
-export default Results

@@ -1,1 +1,1 @@
-export { default } from './Checkboxes'
+export { Checkboxes } from './Checkboxes'

@@ -1,1 +1,2 @@
-export { default } from './Tag'
+export type { ITag, ITagProps } from './Tag'
+export { Tag } from './Tag'

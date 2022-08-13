@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import Categories from '../Categories'
-import Checkboxes from 'src/components/Checkboxes'
+import { Categories } from '../Categories'
+import { Checkboxes } from 'src/components/Checkboxes'
 export interface IContentProps {
   label: string
   selected: boolean
@@ -14,11 +14,12 @@ const StyledContent = styled.div`
   position: absolute;
 `
 
-function Content({ label, selected }: IContentProps) {
+export function Content({ label, selected }: IContentProps) {
   if (!selected) return null
-  return <StyledContent>
-    {label === 'categories' && <Categories />}
-    {label === 'departments' && <Checkboxes />}
+  return (
+    <StyledContent>
+      {label === 'categories' && <Categories />}
+      {label === 'departments' && <Checkboxes />}
     </StyledContent>
+  )
 }
-export default Content

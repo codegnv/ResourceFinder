@@ -1,8 +1,19 @@
-import Hero from 'src/components/LandingPage/Hero'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Hero } from 'src/components/LandingPage/Hero'
+import Head from 'next/head'
+import { useGetAllTagsQuery, useGetAllServicesQuery } from '../services/api'
 
 function Home() {
+  // TODO: Some kind of prefetch
+  const tempTestGrabberForTags = useGetAllTagsQuery(undefined)
+  const tempTestGrabberForServices = useGetAllServicesQuery(undefined)
   return (
     <>
+      <Head>
+        <title>myGNV Resource Finder</title>
+        <meta name='description' content='myGNV Resource Finder' />
+        <link rel='icon' href='/favicon.svg' />
+      </Head>
       <Hero />
     </>
   )

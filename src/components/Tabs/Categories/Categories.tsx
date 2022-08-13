@@ -1,17 +1,17 @@
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import Tags from 'src/components/shared/Tags'
+import { Tags } from 'src/components/shared/Tags'
 import { useGetAllTagsQuery } from '../../../services/api'
 import { useAppSelector } from '../../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../../shared/Status'
-import CategoriesFooter, { ICategoriesFooterProps } from './CategoriesFooter'
-import CategoriesHeader from './CategoriesHeader'
+import { clearTabSelection } from '../tabsSlice'
+import { CategoriesFooter } from './CategoriesFooter'
+import { CategoriesHeader } from './CategoriesHeader'
 import { clearTagSelection, selectedCategories, toggleTagSelection } from './categoriesSlice'
 
-interface ICategoriesProps extends ICategoriesFooterProps {
-  hideSelectedCount?: boolean
-  showOnlyDesktopPreferred?: boolean
-  showOnlyMobilePreferred?: boolean
+interface ICategoriesProps {
+  variant?: 'mobileMain' | 'desktopMain' | 'default'
 }
 
 const StyledCategories = styled.div`
@@ -20,7 +20,8 @@ const StyledCategories = styled.div`
   overflow-y: auto;
 `
 
-function Categories({ hideBottomDivider, hideSelectedCount, showOnlyMobilePreferred }: ICategoriesProps) {
+export function Categories({ variant = 'default' }: ICategoriesProps) {
+  const router = useRouter()
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useGetAllTagsQuery(undefined)
   const selectedTags = useAppSelector(selectedCategories)
@@ -29,7 +30,12 @@ function Categories({ hideBottomDivider, hideSelectedCount, showOnlyMobilePrefer
     dispatch(toggleTagSelection(value))
   }
 
-  const handleOnClear = () => {
+  const handleOnClearTabs = () => {
+    variant === 'mobileMain' && router.push('/services')
+    dispatch(clearTabSelection())
+  }
+
+  const handleOnClearTags = () => {
     dispatch(clearTagSelection())
   }
 
@@ -54,16 +60,16 @@ function Categories({ hideBottomDivider, hideSelectedCount, showOnlyMobilePrefer
       </StyledCategories>
     )
 
-  const filteredTags = showOnlyMobilePreferred ? data.data.filter(tag => tag.preferred) : data.data
+  const filteredTags = variant === 'mobileMain' ? data.data.filter(tag => tag.preferred_mobile) : data.data
 
   return (
-    <>
-      {!hideSelectedCount && <CategoriesHeader count={selectedTags.length} onClear={handleOnClear} />}
+    <section>
+      {variant === 'default' && <CategoriesHeader count={selectedTags.length} onClear={handleOnClearTags} />}
       <StyledCategories>
         <Tags tags={filteredTags || data.data} selectedTags={selectedTags} onClick={handleOnClick} />
       </StyledCategories>
-      <CategoriesFooter hideBottomDivider={hideBottomDivider} />
-    </>
+      <CategoriesFooter hideBottomDivider={variant !== 'default'} onClick={handleOnClearTabs} />
+    </section>
   )
 }
 export default Categories
