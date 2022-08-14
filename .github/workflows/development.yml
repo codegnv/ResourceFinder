@@ -84,6 +84,7 @@ jobs:
     needs:
       - shouldRun
       - lint
+      - test
     if: needs.shouldRun.outputs.shouldRun == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
