@@ -1,5 +1,5 @@
 import { render, screen } from 'test-utils'
-import Tag, { ITagProps } from './Tag'
+import { Tag, ITagProps } from './Tag'
 
 const generateProps = () =>
   ({
