@@ -15,9 +15,9 @@ const StyledCategories = styled.div`
 `
 
 export function Tags({ selectedTags, tags, onClick }: ICategoriesProps) {
-  const ResultsItems = tags.map(tag => (
-    <Tag key={tag.id} tag={tag} selected={selectedTags.includes(tag.name)} onClick={onClick} />
-  ))
+  const ResultsItems = [...tags]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(tag => <Tag key={tag.id} tag={tag} selected={selectedTags.includes(tag.name)} onClick={onClick} />)
 
   return (
     <>

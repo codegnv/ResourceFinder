@@ -1,1 +1,1 @@
-export { default } from './ResultsHeader'
+export { ResultsHeader } from './ResultsHeader'

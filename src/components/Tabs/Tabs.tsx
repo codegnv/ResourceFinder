@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { AnimatePresence } from 'framer-motion'
 import useTranslation from 'next-translate/useTranslation'
 import ClickAwayListener from 'react-click-away-listener'
 import { useDispatch } from 'react-redux'
@@ -45,7 +46,9 @@ export function Tabs() {
         </StyledTabs>
         <StyledContent>
           {TAB_NAMES.map(tabName => (
-            <Content key={tabName} label={tabName} selected={visibleTab === tabName} />
+            <AnimatePresence key={tabName}>
+              {visibleTab && <Content label={tabName} selected={visibleTab === tabName} />}
+            </AnimatePresence>
           ))}
         </StyledContent>
       </section>

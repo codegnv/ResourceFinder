@@ -29,7 +29,7 @@ const StyledAttibuteHeader = styled.span`
   font-weight: 700;
 `
 
-function ResultsItem({ name, criteria, description, departments, programs }: IResultsItemProps) {
+export function ResultsItem({ name, criteria, description, departments, programs }: IResultsItemProps) {
   const departmentNames = departments.map((department: any) => department.name)
   const departmentsList = (
     <div>
@@ -69,5 +69,3 @@ function ResultsItem({ name, criteria, description, departments, programs }: IRe
     </section>
   )
 }
-
-export default ResultsItem

@@ -1,1 +1,1 @@
-export { default } from './ResultsItem'
+export { ResultsItem } from './ResultsItem'
