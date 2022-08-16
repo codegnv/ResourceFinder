@@ -18,6 +18,7 @@ const StyledCategories = styled.div`
   margin-bottom: 30px;
   max-height: 250px;
   overflow-y: auto;
+  padding: 2px 0;
 `
 
 export function Categories({ variant = 'default' }: ICategoriesProps) {

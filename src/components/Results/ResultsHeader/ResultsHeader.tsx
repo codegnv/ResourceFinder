@@ -6,19 +6,15 @@ export interface IResultsHeaderProps {
   total: number
 }
 
-function ResultsHeader({ begin, end, total }: IResultsHeaderProps) {
+export function ResultsHeader({ begin, end, total }: IResultsHeaderProps) {
   return (
     <>
-      <p>
-        Showing{' '}
-        <span style={{ fontWeight: 'bold' }}>
-          {begin} - {end}
-        </span>{' '}
-        of <span style={{ fontWeight: 'bold' }}>{total.toLocaleString()}</span> results
-      </p>
+      Showing{' '}
+      <span style={{ fontWeight: 'bold' }}>
+        {begin} - {end}
+      </span>{' '}
+      of <span style={{ fontWeight: 'bold' }}>{total.toLocaleString()}</span> results
       <MedHrLine />
     </>
   )
 }
-
-export default ResultsHeader

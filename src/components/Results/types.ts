@@ -1,7 +1,10 @@
 // TODO: Get this into data request areas
 export interface IServices {
   id: number
+  criteria: Array<string>
   departments: Array<IDepartment>
+  description: string
+  name: string
   programs: Array<IProgram>
   tags: Array<ITag>
 }
@@ -24,4 +27,6 @@ export interface ITag {
   created_at: string
   name: string
   preferred: boolean
+  preferred_desktop: boolean
+  preferred_mobile: boolean
 }

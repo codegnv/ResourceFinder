@@ -28,10 +28,8 @@ const StyledTab = styled.button<Pick<ITabProps, 'fullWidth' | 'selected'>>`
   flex-direction: row;
   justify-content: center;
   align-items: end;
-  &:active,
-  &:hover {
-    filter: brightness(85%);
-  }
+  cursor: pointer;
+  z-index: 10;
 `
 const StyledLabel = styled.span`
   margin-right: 8px;

@@ -3,15 +3,15 @@ import { useGetAllServicesQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
 import { selectedCategories } from '../Tabs/Categories/categoriesSlice'
-import ResultsHeader from './ResultsHeader'
-import ResultsItem from './ResultsItem'
 import { ITag } from './types'
+import React from 'react'
+import { PaginatedResults } from './PaginatedResults'
 
 const StyledResults = styled.section`
   padding: 24px;
 `
 
-export function Results() {
+export function Results({}) {
   const tagSelection = useAppSelector(selectedCategories)
   const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
 
@@ -41,24 +41,9 @@ export function Results() {
       </StyledResults>
     )
 
-  const ResultsItems = filteredByTagData.map(item => (
-    <ResultsItem
-      name={item.name}
-      criteria={item.criteria}
-      description={
-        item.description ||
-        'Lorem ipsum ut eu non esse laboris sint exercitation commodo consectetur dolor ipsum. Fugiat ut ea ea excepteur exercitation. Proident excepteur incididunt irure cillum sit laboris sit deserunt et cillum officia sit excepteur.'
-      }
-      programs={item.programs}
-      departments={item.departments}
-      key={item.name}
-    />
-  ))
-
   return (
     <StyledResults>
-      <ResultsHeader begin={1} end={filteredByTagData.length} total={filteredByTagData.length} />
-      {ResultsItems}
+      <PaginatedResults data={filteredByTagData} />
     </StyledResults>
   )
 }
