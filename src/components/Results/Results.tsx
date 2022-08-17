@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { useGetAllServicesQuery } from '../../services/api'
 import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
 import { selectedCategories } from '../Tabs/Categories/categoriesSlice'
@@ -7,13 +6,17 @@ import { ITag } from './types'
 import React from 'react'
 import { PaginatedResults } from './PaginatedResults'
 
+export interface IResultsProps {
+  services: any
+}
+
 const StyledResults = styled.section`
   padding: 24px;
 `
 
-export function Results({}) {
+export function Results({ services }: IResultsProps) {
   const tagSelection = useAppSelector(selectedCategories)
-  const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
+  const { data, isError, isLoading } = services
 
   if (isError)
     return (
@@ -31,7 +34,9 @@ export function Results({}) {
 
   const filteredByTagData =
     tagSelection.length > 0 && data?.body
-      ? data.body.filter(item => item.tags.some((tag: ITag) => tagSelection.includes(tag.name)))
+      ? data.body.filter((item: { tags: ITag[] }) =>
+          item.tags.some((tag: ITag) => tagSelection.includes(tag.name))
+        )
       : data?.body
 
   if (!filteredByTagData || filteredByTagData?.length === 0)
