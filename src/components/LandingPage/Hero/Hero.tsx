@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import { Button } from '../../shared/Button'
-import summer from '../../../assets/summer.png'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { BsArrowDownCircle } from 'react-icons/bs'
-import { Categories } from 'src/components/Tabs/Categories'
+import summer from '../../../assets/summer.png'
+import { Button } from '../../shared/Button'
+import { Categories } from '../../Tabs/Categories'
 
 const StyledHero = styled.section`
   padding: 32px 24px;
@@ -47,15 +47,14 @@ const StyledSuggestion = styled.div`
 
 export function Hero() {
   const { t } = useTranslation('common')
-  const router = useRouter()
   return (
     <>
       <StyledHero>
         {t('heroText')}
         <StyledCTA>{t('heroCTA')}</StyledCTA>
-        <StyledButton variant='arrowText' onClick={() => router.push('/services')}>
-          {t('startSearch')}
-        </StyledButton>
+        <Link href={'/services'} passHref prefetch>
+          <StyledButton variant='arrowText'>{t('startSearch')}</StyledButton>
+        </Link>
       </StyledHero>
       <Image src={summer} alt='' layout='responsive' />
       <StyledBTF>

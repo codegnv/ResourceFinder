@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-import { Checkboxes } from 'src/components/Checkboxes'
+import { Checkboxes } from '../../Checkboxes'
 import { Categories } from '../Categories'
+
 export interface IContentProps {
   label: string
   selected: boolean

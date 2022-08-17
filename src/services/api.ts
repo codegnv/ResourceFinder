@@ -20,7 +20,7 @@ export const api = createApi({
     }),
     getAllTags: builder.query({
       queryFn: async () => {
-        const data = await supabase.from('tags')
+        const data = await supabase.from('tags').select('id, name')
         return { data }
       },
     }),

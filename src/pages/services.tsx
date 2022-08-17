@@ -1,8 +1,11 @@
 import Head from 'next/head'
-import { Tabs } from 'src/components/Tabs'
 import { Results } from '../components/Results'
+import { Tabs } from '../components/Tabs'
+import { useGetAllServicesQuery } from '../services/api'
 
 function Services() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const tempTestGrabberForServices = useGetAllServicesQuery(undefined)
   return (
     <>
       <Head>
@@ -13,7 +16,7 @@ function Services() {
       <Tabs />
 
       <main>
-        <Results />
+        <Results services={tempTestGrabberForServices} />
       </main>
     </>
   )
