@@ -4,6 +4,7 @@ import Image from 'next/image'
 import siteLogo from '../../assets/siteLogo.svg'
 import { AiOutlineSearch } from 'react-icons/ai'
 import Link from 'next/link'
+import { Search } from './Search'
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -33,18 +34,21 @@ export function Title() {
     line-height: 150%;
   `
   return (
-    <StyledWrapper>
-      <Link href={'/'} passHref>
-        <StyledLogoTitle>
-          <StyledLogo>
-            <Image src={siteLogo} alt='Site Logo' width='90px' height='24px' />
-          </StyledLogo>
-          {t('siteTitle')}
-        </StyledLogoTitle>
-      </Link>
-      <StyledSearch>
-        <AiOutlineSearch />
-      </StyledSearch>
-    </StyledWrapper>
+    <div>
+      <StyledWrapper>
+        <Link href={'/'} passHref>
+          <StyledLogoTitle>
+            <StyledLogo>
+              <Image src={siteLogo} alt='Site Logo' width='90px' height='24px' />
+            </StyledLogo>
+            {t('siteTitle')}
+          </StyledLogoTitle>
+        </Link>
+        <StyledSearch>
+          <AiOutlineSearch />
+        </StyledSearch>
+      </StyledWrapper>
+      <Search></Search>
+    </div>
   )
 }
