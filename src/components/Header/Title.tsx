@@ -10,8 +10,6 @@ import { useAppSelector } from 'src/services/hooks'
 import { useDispatch } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
 import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
-import { motion } from 'framer-motion'
-
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -40,10 +38,19 @@ export function Title() {
   const StyledSearch = styled.div`
     line-height: 150%;
   `
+  const StyledButton = styled.button`
+    background-color: ${props => props.theme.colors.coolMint};
+    border: none;
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+  `
 
-  const dispatch = useDispatch();
-  const clickSearchButton = useAppSelector(searchButtonClicked);
- 
+  const dispatch = useDispatch()
+  const clickSearchButton = useAppSelector(searchButtonClicked)
 
   return (
     <div>
@@ -57,15 +64,12 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <button onClick={() => dispatch(showSearchbar())}>
-            <AiOutlineSearch />
-          </button>
+          <StyledButton onClick={() => dispatch(showSearchbar())}>
+            <AiOutlineSearch style={{ height: '30px', width: '30px' }} />
+          </StyledButton>
         </StyledSearch>
       </StyledWrapper>
-        <AnimatePresence key = {'searchbar'}>
-          {clickSearchButton && <Search/>}
-        </AnimatePresence>
+      <AnimatePresence key={'searchbar'}>{clickSearchButton && <Search />}</AnimatePresence>
     </div>
   )
 }
-
