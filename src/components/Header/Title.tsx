@@ -4,7 +4,12 @@ import Image from 'next/image'
 import siteLogo from '../../assets/siteLogo.svg'
 import { AiOutlineSearch } from 'react-icons/ai'
 import Link from 'next/link'
+//new imports
 import { Search } from './Search'
+import { useAppSelector } from 'src/services/hooks'
+import { useDispatch } from 'react-redux'
+import { searchButtonClicked, toggleShowSearchbar } from './Search/searchSlice'
+import { Content } from '../Tabs/Content'
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -33,6 +38,10 @@ export function Title() {
   const StyledSearch = styled.div`
     line-height: 150%;
   `
+
+  const clickSearchButton = useAppSelector(searchButtonClicked)
+  console.log(clickSearchButton)
+
   return (
     <div>
       <StyledWrapper>
@@ -45,10 +54,12 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <AiOutlineSearch />
+          <button>
+            <AiOutlineSearch />
+          </button>
         </StyledSearch>
       </StyledWrapper>
-      <Search></Search>
+      {clickSearchButton ? <Search/> : null}
     </div>
   )
 }
