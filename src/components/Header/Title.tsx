@@ -8,7 +8,10 @@ import Link from 'next/link'
 import { Search } from './Search'
 import { useAppSelector } from 'src/services/hooks'
 import { useDispatch } from 'react-redux'
+import { AnimatePresence } from 'framer-motion'
 import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
+import { motion } from 'framer-motion'
+
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -37,9 +40,10 @@ export function Title() {
   const StyledSearch = styled.div`
     line-height: 150%;
   `
+
   const dispatch = useDispatch();
   const clickSearchButton = useAppSelector(searchButtonClicked);
-  console.log(clickSearchButton)
+ 
 
   return (
     <div>
@@ -53,12 +57,15 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <button onClick={() => dispatch(showSearchbar(clickSearchButton))}>
+          <button onClick={() => dispatch(showSearchbar())}>
             <AiOutlineSearch />
           </button>
         </StyledSearch>
       </StyledWrapper>
-      {clickSearchButton ? <Search/> : null}
+        <AnimatePresence key = {'searchbar'}>
+          {clickSearchButton && <Search/>}
+        </AnimatePresence>
     </div>
   )
 }
+

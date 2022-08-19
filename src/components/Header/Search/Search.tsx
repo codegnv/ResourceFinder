@@ -1,12 +1,12 @@
 import styled from "@emotion/styled"
 import { AiOutlineSearch } from "react-icons/ai"
-import { useAppSelector } from "src/services/hooks"
 import { useDispatch } from "react-redux"
-import { searchButtonClicked, closeSearchbar } from "./searchSlice"
+import { closeSearchbar } from "./searchSlice"
+import { motion } from "framer-motion"
 
 export function Search() {
 
-    const StyledWrapper = styled.div`
+    const StyledWrapper = styled(motion.div)`
     display: flex;
     align-items: center;
     font-family: 'Pontano Sans';
@@ -48,10 +48,15 @@ export function Search() {
         cursor: pointer;
     `
     const dispatch = useDispatch();
-    const clickCancelButton = useAppSelector(searchButtonClicked);
+    
 
     return(
-        <StyledWrapper>
+        <StyledWrapper
+            key={'searchbar'}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+        >
                 <StyledLogoWrapper>
                     <AiOutlineSearch></AiOutlineSearch>
                 </StyledLogoWrapper>
@@ -61,7 +66,7 @@ export function Search() {
                         placeholder="Type your search here"
                         >
                     </StyledInput>
-                    <StyledCancelButton onClick={() => dispatch(closeSearchbar(clickCancelButton))}>CANCEL</StyledCancelButton>
+                    <StyledCancelButton onClick={() => dispatch(closeSearchbar())}>CANCEL</StyledCancelButton>
                 </StyledInputWrapper>
         </StyledWrapper>
     )
