@@ -8,8 +8,7 @@ import Link from 'next/link'
 import { Search } from './Search'
 import { useAppSelector } from 'src/services/hooks'
 import { useDispatch } from 'react-redux'
-import { searchButtonClicked, toggleShowSearchbar } from './Search/searchSlice'
-import { Content } from '../Tabs/Content'
+import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -38,8 +37,8 @@ export function Title() {
   const StyledSearch = styled.div`
     line-height: 150%;
   `
-
-  const clickSearchButton = useAppSelector(searchButtonClicked)
+  const dispatch = useDispatch();
+  const clickSearchButton = useAppSelector(searchButtonClicked);
   console.log(clickSearchButton)
 
   return (
@@ -54,7 +53,7 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <button>
+          <button onClick={() => dispatch(showSearchbar(clickSearchButton))}>
             <AiOutlineSearch />
           </button>
         </StyledSearch>

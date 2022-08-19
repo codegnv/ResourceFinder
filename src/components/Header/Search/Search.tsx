@@ -1,5 +1,8 @@
 import styled from "@emotion/styled"
 import { AiOutlineSearch } from "react-icons/ai"
+import { useAppSelector } from "src/services/hooks"
+import { useDispatch } from "react-redux"
+import { searchButtonClicked, closeSearchbar } from "./searchSlice"
 
 export function Search() {
 
@@ -44,6 +47,8 @@ export function Search() {
         color: ${props => props.theme.colors.primary};
         cursor: pointer;
     `
+    const dispatch = useDispatch();
+    const clickCancelButton = useAppSelector(searchButtonClicked);
 
     return(
         <StyledWrapper>
@@ -56,7 +61,7 @@ export function Search() {
                         placeholder="Type your search here"
                         >
                     </StyledInput>
-                    <StyledCancelButton>CANCEL</StyledCancelButton>
+                    <StyledCancelButton onClick={() => dispatch(closeSearchbar(clickCancelButton))}>CANCEL</StyledCancelButton>
                 </StyledInputWrapper>
         </StyledWrapper>
     )

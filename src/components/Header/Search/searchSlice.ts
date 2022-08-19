@@ -13,19 +13,22 @@ const searchButtonSlice = createSlice({
     name: 'searchButton',
     initialState,
     reducers: {
-        toggleShowSearchbar: (state, action: PayloadAction<boolean>) => {
-            if (state.searchButtonClicked === action.payload){
+        showSearchbar: (state) => {
+            //if (state.searchButtonClicked === false){
                 state.searchButtonClicked = true;
-            }
-            else {
-                state.searchButtonClicked = false;
-            }
+           //}
+            //else {
+              //  state.searchButtonClicked = false;
+          //  }
         },
+        closeSearchbar: (state) => {
+            state.searchButtonClicked = false;
+        }
     },
 })
 
 
-export const { toggleShowSearchbar } = searchButtonSlice.actions
+export const { showSearchbar, closeSearchbar } = searchButtonSlice.actions
 
 export const searchButtonClicked = (state: RootState) => state.searchButton.searchButtonClicked
 
