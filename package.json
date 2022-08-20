@@ -14,7 +14,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "format": "prettier --write ./src/**/*.{ts,tsx}",
-    "lint": "next lint && prettier --check ./src/**/*.{ts,tsx}",
+    "checkFormat": "prettier --check ./src/**/*.{ts,tsx}",
+    "lint": "next lint",
     "test": "jest",
     "prepare": "husky install"
   },
