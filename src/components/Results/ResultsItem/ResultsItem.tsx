@@ -1,71 +1,39 @@
 import styled from '@emotion/styled'
-import { dedupeArray } from '../../../utils/arrays'
+import useTranslation from 'next-translate/useTranslation'
+import { getNames } from '../../../utils/arrays'
 import { SmHrLine } from '../../shared/HrLine'
+import { IServices } from '../types'
+import { ItemAttribute } from './ItemAttribute'
 
-export interface IResultsItemProps {
-  name: string
-  criteria?: Array<string>
-  description: string
-  departments: Array<any>
-  programs: Array<any>
-}
+interface IResultsItemProps
+  extends Pick<IServices, 'name' | 'criteria' | 'departments' | 'description' | 'programs'> {}
 
 const StyledHeader = styled.h2`
   margin-bottom: 12px;
+  outline: none;
 `
 
 const StyledDescription = styled.p`
   margin-bottom: 12px;
+  outline: none;
 `
-
-const StyledAttributes = styled.div`
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  row-gap: 8px;
-  margin-top: 22px;
-`
-
-const StyledAttibuteHeader = styled.span`
-  font-weight: 700;
-`
-
 export function ResultsItem({ name, criteria, description, departments, programs }: IResultsItemProps) {
-  const departmentNames = departments.map((department: any) => department.name)
-  const departmentsList = (
-    <div>
-      {dedupeArray(departmentNames).map(departmentNames => (
-        <div key={departmentNames}>{departmentNames}</div>
-      ))}
-    </div>
-  )
-
-  const programNames = programs.map((program: any) => program.name)
-  const programsList = (
-    <div>
-      {dedupeArray(programNames).map(programNames => (
-        <div key={programNames}>{programNames}</div>
-      ))}
-    </div>
-  )
-
-  const criteriaList = (
-    <div>{criteria && criteria.map(criteriaName => <div key={criteriaName}>{criteriaName}</div>)}</div>
-  )
+  const { t } = useTranslation('common')
 
   return (
-    <section>
-      <StyledHeader>{name}</StyledHeader>
-      <StyledDescription>{description}</StyledDescription>
-      <StyledAttributes>
-        <StyledAttibuteHeader>Offered by: </StyledAttibuteHeader> {departmentsList}
-        <StyledAttibuteHeader>Part of: </StyledAttibuteHeader> {programsList}
-        {criteria && (
-          <>
-            <StyledAttibuteHeader>Criteria: </StyledAttibuteHeader> {criteriaList}
-          </>
-        )}
-      </StyledAttributes>
+    <article>
+      <StyledHeader tabIndex={0} aria-label={`Service: ${name}`}>
+        {name}
+      </StyledHeader>
+      <StyledDescription tabIndex={0} aria-label={`Description: ${description}`}>
+        {description}
+      </StyledDescription>
+      <section>
+        <ItemAttribute header={t('offeredBy')} items={getNames(departments)} />
+        <ItemAttribute header={t('partOf')} items={getNames(programs)} />
+        <ItemAttribute header={t('criteria')} items={getNames(criteria)} />
+      </section>
       <SmHrLine />
-    </section>
+    </article>
   )
 }
