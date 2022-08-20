@@ -42,6 +42,7 @@ const StyledSuggestion = styled.div`
 
 export function Hero() {
   const { t } = useTranslation('common')
+
   return (
     <>
       <StyledHero>
