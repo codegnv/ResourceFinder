@@ -24,17 +24,13 @@ const StyledBTF = styled.section`
   background-color: ${props => props.theme.colors.base};
   color: ${props => props.theme.colors.baseLight};
 `
-const StyledSeasonalText = styled.section`
-  display: flex;
-  gap: 24px;
-  padding-bottom: 32px;
-  font: normal normal normal 28px/32px Pontano Sans;
-`
+
 const StyledBestSummer = styled.section`
   padding-bottom: 32px;
   padding-right: 100px;
   font: normal normal normal 22px/32px Pontano Sans;
 `
+
 const StyledSuggestion = styled.div`
   padding-bottom: 32px;
   font: normal normal bold 13px/28px Inter;
@@ -51,13 +47,12 @@ export function Hero() {
       <StyledHero>
         {t('heroText')}
         <StyledCTA>{t('heroCTA')}</StyledCTA>
-        <Link href={'/services'} passHref prefetch>
+        <Link href={'/services'} passHref>
           <StyledButton variant='arrowText'>{t('startSearch')}</StyledButton>
         </Link>
       </StyledHero>
       <Image src={summer} alt='' layout='responsive' />
       <StyledBTF>
-        <StyledSeasonalText>{t('seasonalPrograms')}</StyledSeasonalText>
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
         <Categories variant='mobileMain' />
