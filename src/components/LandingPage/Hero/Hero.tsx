@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { BsArrowDownCircle } from 'react-icons/bs'
 import summer from '../../../assets/summer.png'
 import { Button } from '../../shared/Button'
 import { Categories } from '../../Tabs/Categories'
@@ -25,17 +24,13 @@ const StyledBTF = styled.section`
   background-color: ${props => props.theme.colors.base};
   color: ${props => props.theme.colors.baseLight};
 `
-const StyledSeasonalText = styled.section`
-  display: flex;
-  gap: 24px;
-  padding-bottom: 32px;
-  font: normal normal normal 28px/32px Pontano Sans;
-`
+
 const StyledBestSummer = styled.section`
   padding-bottom: 32px;
   padding-right: 100px;
   font: normal normal normal 22px/32px Pontano Sans;
 `
+
 const StyledSuggestion = styled.div`
   padding-bottom: 32px;
   font: normal normal bold 13px/28px Inter;
@@ -47,23 +42,18 @@ const StyledSuggestion = styled.div`
 
 export function Hero() {
   const { t } = useTranslation('common')
+
   return (
     <>
       <StyledHero>
         {t('heroText')}
         <StyledCTA>{t('heroCTA')}</StyledCTA>
-        <Link href={'/services'} passHref prefetch>
+        <Link href={'/services'} passHref>
           <StyledButton variant='arrowText'>{t('startSearch')}</StyledButton>
         </Link>
       </StyledHero>
       <Image src={summer} alt='' layout='responsive' />
       <StyledBTF>
-        <StyledSeasonalText>
-          <div>
-            <BsArrowDownCircle size={32} />
-          </div>
-          {t('seasonalPrograms')}
-        </StyledSeasonalText>
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
         <Categories variant='mobileMain' />
