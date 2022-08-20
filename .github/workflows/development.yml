@@ -48,10 +48,43 @@ jobs:
       - name: Lint
         run: yarn lint
 
+  checkCodeFormat:
+    needs: shouldRun
+    if: needs.shouldRun.outputs.shouldRun == 'true' && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - if: github.event_name != 'pull_request_target'
+        uses: actions/checkout@v2.3.4
+      - if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v2.3.4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: fregante/setup-git-user@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            /tmp/.yarn_cache
+          key: v5-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Yarn
+        run: yarn --pure-lockfile --cache-folder /tmp/.yarn_cache
+      - name: Cache dependency tree
+        uses: actions/cache@v2
+        with:
+          path: ./tmp/.changescache
+          key: v5-dep-tree
+      - name: Prettier
+        run: yarn checkFormat
+
   deploy:
     needs:
       - shouldRun
       - lint
+      - checkCodeFormat
     if: needs.shouldRun.outputs.shouldRun == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
