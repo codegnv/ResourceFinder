@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import Link from 'next/link'
+import router from 'next/router'
 import summer from '../../../assets/summer.png'
 import { Button } from '../../shared/Button'
 import { Categories } from '../../Tabs/Categories'
@@ -48,9 +48,9 @@ export function Hero() {
       <StyledHero>
         {t('heroText')}
         <StyledCTA>{t('heroCTA')}</StyledCTA>
-        <Link href={'/services'} passHref>
-          <StyledButton variant='arrowText'>{t('startSearch')}</StyledButton>
-        </Link>
+        <StyledButton variant='arrowText' onClick={() => router.push('/services')}>
+          {t('startSearch')}
+        </StyledButton>
       </StyledHero>
       <Image src={summer} alt='' layout='responsive' />
       <StyledBTF>
