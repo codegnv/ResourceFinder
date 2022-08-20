@@ -1,12 +1,18 @@
 // TODO: Get this into data request areas
 export interface IServices {
   id: number
-  criteria: Array<string>
+  criteria: Array<ICriteria>
   departments: Array<IDepartment>
   description: string
   name: string
   programs: Array<IProgram>
   tags: Array<ITag>
+}
+
+export interface ICriteria {
+  id: number
+  created_at: string
+  name: string
 }
 
 export interface IDepartment {

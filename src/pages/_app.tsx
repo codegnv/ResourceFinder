@@ -53,6 +53,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             font-size: 20px;
             line-height: 24px;
           }
+
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+          }
         `}
       />
       <Provider store={store}>

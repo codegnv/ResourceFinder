@@ -10,6 +10,8 @@
   "loading": "Loading...",
   "mayWeSuggest": "May We Suggest",
   "noResults": "No Results!",
+  "offeredBy": "Offered by",
+  "partOf": "Part of",
   "seeResults": "See Results",
   "selectedItems_0": "No items selected",
   "selectedItems_one": "{{count}} item selected",

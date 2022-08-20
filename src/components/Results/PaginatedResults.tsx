@@ -1,10 +1,9 @@
-import { ResultsItem } from './ResultsItem'
-
-import ReactPaginate from 'react-paginate'
-import React from 'react'
-import { ResultsHeader } from './ResultsHeader'
-import { IServices } from './types'
 import styled from '@emotion/styled'
+import React from 'react'
+import ReactPaginate from 'react-paginate'
+import { ResultsHeader } from './ResultsHeader'
+import { ResultsItem } from './ResultsItem'
+import { IServices } from './types'
 
 interface IPaginatedResultsProps {
   data: Array<IServices>
