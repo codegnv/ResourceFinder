@@ -8,9 +8,12 @@ import { ItemAttribute } from './ItemAttribute'
 interface IResultsItemProps
   extends Pick<IServices, 'name' | 'criteria' | 'departments' | 'description' | 'programs'> {}
 
+const StyledArticle = styled.article`
+  outline: none;
+`
+
 const StyledHeader = styled.h2`
   margin-bottom: 12px;
-  outline: none;
 `
 
 const StyledDescription = styled.p`
@@ -21,19 +24,15 @@ export function ResultsItem({ name, criteria, description, departments, programs
   const { t } = useTranslation('common')
 
   return (
-    <article>
-      <StyledHeader tabIndex={0} aria-label={`Service: ${name}`}>
-        {name}
-      </StyledHeader>
-      <StyledDescription tabIndex={0} aria-label={`Description: ${description}`}>
-        {description}
-      </StyledDescription>
+    <StyledArticle tabIndex={0}>
+      <StyledHeader aria-label={`Service: ${name},`}>{name}</StyledHeader>
+      <StyledDescription aria-label={`Description: ${description},`}>{description}</StyledDescription>
       <section>
         <ItemAttribute header={t('offeredBy')} items={getNames(departments)} />
         <ItemAttribute header={t('partOf')} items={getNames(programs)} />
         <ItemAttribute header={t('criteria')} items={getNames(criteria)} />
       </section>
       <SmHrLine />
-    </article>
+    </StyledArticle>
   )
 }

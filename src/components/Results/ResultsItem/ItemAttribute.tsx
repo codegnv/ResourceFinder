@@ -20,7 +20,7 @@ export function ItemAttribute({ header, items }: IItemAttributeProps) {
   if (!items?.length) return null
 
   return (
-    <StyledAttribute tabIndex={0} aria-label={`${header}: ${items.map(item => item + ', ')}`}>
+    <StyledAttribute aria-label={`${header}: ${items.map(item => item + ', ')}`}>
       <StyledAttibuteHeader>{`${header}: `}</StyledAttibuteHeader>
       <ul>
         {items.map(item => (
