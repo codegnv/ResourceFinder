@@ -5,7 +5,7 @@ interface ILayoutProps {
 export default function Layout({ children }: ILayoutProps) {
   return (
     <>
-      <main style={{ height: '100%' }}>{children}</main>
+      <main style={{ minHeight: '100vh' }}>{children}</main>
     </>
   )
 }
