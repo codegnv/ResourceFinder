@@ -91,11 +91,11 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
         <StyledReactPaginate
           activeClassName='active'
           breakLabel='...'
-          nextLabel='NEXT >'
+          nextLabel='>'
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           pageCount={pageCount}
-          previousLabel='< PREV'
+          previousLabel='<'
         />
       )}
     </>
