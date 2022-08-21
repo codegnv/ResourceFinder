@@ -12,6 +12,7 @@ import { clearTagSelection, selectedCategories, toggleTagSelection } from './cat
 
 interface ICategoriesProps {
   variant?: 'mobileMain' | 'desktopMain' | 'default'
+  index?: number
 }
 
 const StyledCategories = styled.div`

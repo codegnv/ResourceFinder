@@ -3,6 +3,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 export interface ITabProps {
   label: string
+  index: number
   fullWidth?: boolean
   onClick: () => void
   selected: boolean
@@ -36,10 +37,20 @@ const StyledLabel = styled.span`
   display: flex;
 `
 
-function Tab({ label, fullWidth, selected, onClick }: ITabProps) {
+// TODO: arrow selection
+
+function Tab({ fullWidth, index, label, selected, onClick }: ITabProps) {
   return (
     <>
-      <StyledTab fullWidth={fullWidth} onClick={onClick} selected={selected}>
+      <StyledTab
+        aria-controls={`${label}-${index}-panel`}
+        aria-selected={selected}
+        fullWidth={fullWidth}
+        onClick={onClick}
+        selected={selected}
+        role='tab'
+        tabIndex={index === 0 ? 0 : -1}
+      >
         <StyledLabel>{label}</StyledLabel>
         {selected ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </StyledTab>

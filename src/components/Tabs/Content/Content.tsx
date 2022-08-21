@@ -6,6 +6,7 @@ import { Categories } from '../Categories'
 export interface IContentProps {
   label: string
   selected: boolean
+  index: number
 }
 
 const StyledContent = styled(motion.div)`
@@ -17,7 +18,7 @@ const StyledContent = styled(motion.div)`
   z-index: 5;
 `
 
-export function Content({ label, selected }: IContentProps) {
+export function Content({ label, selected, index }: IContentProps) {
   if (!selected) return null
   return (
     <StyledContent
@@ -25,6 +26,7 @@ export function Content({ label, selected }: IContentProps) {
       initial={{ opacity: 0, y: -40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -40 }}
+      id={`${label}-${index}-panel`}
     >
       {label === 'categories' && <Categories />}
       {label === 'departments' && <Checkboxes />}
