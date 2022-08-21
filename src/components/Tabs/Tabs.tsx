@@ -33,21 +33,22 @@ export function Tabs() {
   return (
     <ClickAwayListener onClickAway={handleOnClearTabs}>
       <section>
-        <StyledTabs>
-          {TAB_NAMES.map(tabName => (
+        <StyledTabs role='tablist' aria-label='Filter Tabs'>
+          {TAB_NAMES.map((tabName, index) => (
             <Tab
+              key={tabName}
               fullWidth
               label={t(tabName)}
-              key={tabName}
+              index={index}
               selected={visibleTab === tabName}
               onClick={() => dispatch(toggleTabSelection(tabName))}
             />
           ))}
         </StyledTabs>
         <StyledContent>
-          {TAB_NAMES.map(tabName => (
+          {TAB_NAMES.map((tabName, index) => (
             <AnimatePresence key={tabName}>
-              {visibleTab && <Content label={tabName} selected={visibleTab === tabName} />}
+              {visibleTab && <Content label={tabName} selected={visibleTab === tabName} index={index} />}
             </AnimatePresence>
           ))}
         </StyledContent>
