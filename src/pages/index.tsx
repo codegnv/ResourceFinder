@@ -13,7 +13,6 @@ function Home() {
       <Head>
         <title>myGNV Resource Finder</title>
         <meta name='description' content='myGNV Resource Finder' />
-        <link rel='icon' href='/favicon.svg' />
       </Head>
       <Hero />
     </>

@@ -9,9 +9,8 @@ function Services() {
   return (
     <>
       <Head>
-        <title>myGNV Resource Finder</title>
-        <meta name='description' content='myGNV Resource Finder' />
-        <link rel='icon' href='/favicon.svg' />
+        <title>Services | myGNV Resource Finder</title>
+        <meta name='description' content='myGNV Resource Finder List of services' />
       </Head>
       <Tabs />
 

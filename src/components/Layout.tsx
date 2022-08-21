@@ -1,24 +1,11 @@
-import { Header } from './Header'
-
-type Props = {
+interface ILayoutProps {
   children: React.ReactNode
 }
 
-// TODO: Refactor main
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: ILayoutProps) {
   return (
-    // TODO: Remove this
-    <div
-      style={{
-        maxWidth: '450px',
-        margin: 'auto',
-        height: 'auto !important',
-        minHeight: '100vh',
-        border: '0.5px solid black',
-      }}
-    >
-      <Header />
-      <main style={{ height: '100%' }}>{children}</main>
-    </div>
+    <>
+      <main style={{ minHeight: '100vh' }}>{children}</main>
+    </>
   )
 }
