@@ -4,6 +4,12 @@ import Image from 'next/image'
 import siteLogo from '../../assets/siteLogo.svg'
 import { AiOutlineSearch } from 'react-icons/ai'
 import Link from 'next/link'
+//new imports
+import { Search } from './Search'
+import { useAppSelector } from 'src/services/hooks'
+import { useDispatch } from 'react-redux'
+import { AnimatePresence } from 'framer-motion'
+import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
 
 export function Title() {
   const { t } = useTranslation('common')
@@ -32,19 +38,38 @@ export function Title() {
   const StyledSearch = styled.div`
     line-height: 150%;
   `
+  const StyledButton = styled.button`
+    background-color: ${props => props.theme.colors.coolMint};
+    border: none;
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+  `
+
+  const dispatch = useDispatch()
+  const clickSearchButton = useAppSelector(searchButtonClicked)
+
   return (
-    <StyledWrapper>
-      <Link href={'/'} passHref>
-        <StyledLogoTitle>
-          <StyledLogo>
-            <Image src={siteLogo} alt='Site Logo' width='90px' height='24px' />
-          </StyledLogo>
-          {t('siteTitle')}
-        </StyledLogoTitle>
-      </Link>
-      <StyledSearch>
-        <AiOutlineSearch />
-      </StyledSearch>
-    </StyledWrapper>
+    <div>
+      <StyledWrapper>
+        <Link href={'/'} passHref>
+          <StyledLogoTitle>
+            <StyledLogo>
+              <Image src={siteLogo} alt='Site Logo' width='90px' height='24px' />
+            </StyledLogo>
+            {t('siteTitle')}
+          </StyledLogoTitle>
+        </Link>
+        <StyledSearch>
+          <StyledButton onClick={() => dispatch(showSearchbar())}>
+            <AiOutlineSearch style={{ height: '30px', width: '30px' }} />
+          </StyledButton>
+        </StyledSearch>
+      </StyledWrapper>
+      <AnimatePresence key={'searchbar'}>{clickSearchButton && <Search />}</AnimatePresence>
+    </div>
   )
 }
