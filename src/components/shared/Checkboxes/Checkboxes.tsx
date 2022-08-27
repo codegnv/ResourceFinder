@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
-import { useGetAllDepartmentsQuery } from '../../services/api'
-import { useAppSelector } from '../../services/hooks'
-import { LoaderState } from '../shared/Status'
+import { useGetAllDepartmentsQuery } from '../../../services/api'
+import { useAppSelector } from '../../../services/hooks'
+import { LoaderState } from '../Status'
 import { Checkbox } from './Checkbox'
 import { selectedCheckboxes, toggleCheckboxSelection } from './checkboxesSlice'
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-import { Checkboxes } from '../../Checkboxes'
+import { Checkboxes } from '../../shared/Checkboxes'
 import { Categories } from '../Categories'
 
 export interface IContentProps {

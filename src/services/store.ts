@@ -1,5 +1,5 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import checkboxesReducer from '../components/Checkboxes/checkboxesSlice'
+import checkboxesReducer from '../components/shared/Checkboxes/checkboxesSlice'
 import categoriesReducer from '../components/Tabs/Categories/categoriesSlice'
 import tabsReducer from '../components/Tabs/tabsSlice'
 import searchButtonReducer from '../components/Header/Search/searchSlice'
