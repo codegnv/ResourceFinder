@@ -1,18 +1,19 @@
 import styled from '@emotion/styled'
+import { AnimatePresence } from 'framer-motion'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import siteLogo from '../../assets/siteLogo.svg'
-import { AiOutlineSearch } from 'react-icons/ai'
 import Link from 'next/link'
-//new imports
-import { Search } from './Search'
-import { useAppSelector } from 'src/services/hooks'
+import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { AnimatePresence } from 'framer-motion'
+import { useAppSelector } from 'src/services/hooks'
+import siteLogo from '../../assets/siteLogo.svg'
+import { Search } from './Search'
 import { isSearchbarVisible, toggleSearchbarVisible } from './Search/searchSlice'
 
 export function Title() {
   const { t } = useTranslation('common')
+  const dispatch = useDispatch()
+  const clickSearchButton = useAppSelector(isSearchbarVisible)
 
   const StyledWrapper = styled.div`
     display: flex;
@@ -46,9 +47,6 @@ export function Title() {
     text-align: center;
     cursor: pointer;
   `
-
-  const dispatch = useDispatch()
-  const clickSearchButton = useAppSelector(isSearchbarVisible)
 
   return (
     <div>

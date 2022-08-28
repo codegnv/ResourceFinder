@@ -48,12 +48,13 @@ export function Search() {
     right: 15px;
     top: 22px;
   `
+
   const handleCancel = () => {
     dispatch(closeSearchbar())
     dispatch(updateSearchText(''))
   }
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value)
     dispatch(updateSearchText(event.target.value))
   }
 
