@@ -68,7 +68,7 @@ export function Search() {
       <StyledLogoWrapper>
         <AiOutlineSearch />
       </StyledLogoWrapper>
-      <StyledInput type='text' placeholder={t('searchPlaceholder')} onChange={handleInputChange} />
+      <StyledInput autoFocus type='text' placeholder={t('searchPlaceholder')} onChange={handleInputChange} />
       <StyledCancelButton variant='text' onClick={handleCancel}>
         {t('cancel')}
       </StyledCancelButton>
