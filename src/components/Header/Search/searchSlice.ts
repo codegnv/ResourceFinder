@@ -1,33 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from 'src/services/store'
 
-export interface searchButtonState {
-  searchButtonClicked: boolean
+export interface searchState {
+  isSearchbarVisible: boolean
+  searchText: string
 }
 
-const initialState: searchButtonState = {
-  searchButtonClicked: false,
+const initialState: searchState = {
+  isSearchbarVisible: false,
+  searchText: '',
 }
 
-const searchButtonSlice = createSlice({
-  name: 'searchButton',
+const searchSlice = createSlice({
+  name: 'search',
   initialState,
   reducers: {
-    showSearchbar: state => {
-      if (state.searchButtonClicked === false) {
-        state.searchButtonClicked = true
+    toggleSearchbarVisible: state => {
+      if (state.isSearchbarVisible) {
+        state.isSearchbarVisible = false
       } else {
-        state.searchButtonClicked = false
+        state.isSearchbarVisible = true
       }
     },
     closeSearchbar: state => {
-      state.searchButtonClicked = false
+      state.isSearchbarVisible = false
+    },
+    updateSearchText: (state, action) => {
+      state.searchText = action.payload
     },
   },
 })
 
-export const { showSearchbar, closeSearchbar } = searchButtonSlice.actions
+export const { closeSearchbar, toggleSearchbarVisible, updateSearchText } = searchSlice.actions
 
-export const searchButtonClicked = (state: RootState) => state.searchButton.searchButtonClicked
+export const isSearchbarVisible = (state: RootState) => state.search.isSearchbarVisible
+export const searchText = (state: RootState) => state.search.searchText
 
-export default searchButtonSlice.reducer
+export default searchSlice.reducer

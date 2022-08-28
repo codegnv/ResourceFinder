@@ -9,21 +9,19 @@ import { Search } from './Search'
 import { useAppSelector } from 'src/services/hooks'
 import { useDispatch } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
-import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
+import { isSearchbarVisible, toggleSearchbarVisible } from './Search/searchSlice'
 
 export function Title() {
   const { t } = useTranslation('common')
 
   const StyledWrapper = styled.div`
-    height: 70px;
-    background-color: ${props => props.theme.colors.coolMint};
     display: flex;
-    align-items: center;
-    font-family: 'Pontano Sans';
-    font-size: 20px;
-    line-height: 20px;
+    height: 70px;
     padding: 0 20px;
     justify-content: space-between;
+    align-items: center;
+    font: 20px/20px Pontano Sans;
+    background-color: ${props => props.theme.colors.coolMint};
   `
 
   const StyledLogoTitle = styled.div`
@@ -50,7 +48,7 @@ export function Title() {
   `
 
   const dispatch = useDispatch()
-  const clickSearchButton = useAppSelector(searchButtonClicked)
+  const clickSearchButton = useAppSelector(isSearchbarVisible)
 
   return (
     <div>
@@ -64,7 +62,7 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <StyledButton onClick={() => dispatch(showSearchbar())}>
+          <StyledButton onClick={() => dispatch(toggleSearchbarVisible())}>
             <AiOutlineSearch style={{ height: '30px', width: '30px' }} />
           </StyledButton>
         </StyledSearch>

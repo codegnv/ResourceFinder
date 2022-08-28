@@ -1,5 +1,5 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import searchButtonReducer from '../components/Header/Search/searchSlice'
+import searchReducer from '../components/Header/Search/searchSlice'
 import categoriesReducer from '../components/Tabs/Content/Categories/categoriesSlice'
 import departmentsReducer from '../components/Tabs/Content/Departments/departmentsSlice'
 import tabsReducer from '../components/Tabs/tabsSlice'
@@ -10,7 +10,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     departments: departmentsReducer,
     tabs: tabsReducer,
-    searchButton: searchButtonReducer,
+    search: searchReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: gDM => gDM().concat(api.middleware),

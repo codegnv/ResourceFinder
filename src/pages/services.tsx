@@ -1,11 +1,45 @@
+import styled from '@emotion/styled'
 import Head from 'next/head'
+import { searchText } from 'src/components/Header/Search/searchSlice'
+import { ErrorState, LoaderState, NoResultsState } from 'src/components/shared/Status'
+import { selectedCategories } from 'src/components/Tabs/Content/Categories/categoriesSlice'
+import { selectedDepartments } from 'src/components/Tabs/Content/Departments/departmentsSlice'
+import { useAppSelector } from 'src/services/hooks'
 import { Results } from '../components/Results'
 import { Tabs } from '../components/Tabs'
 import { useGetAllServicesQuery } from '../services/api'
 
 function Services() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const tempTestGrabberForServices = useGetAllServicesQuery(undefined)
+  const { data, isError, isLoading } = useGetAllServicesQuery(undefined)
+  const categories = useAppSelector(selectedCategories)
+  const departments = useAppSelector(selectedDepartments)
+  const search = useAppSelector(searchText)
+
+  const StyledResults = styled.section`
+    padding: 24px;
+  `
+
+  if (isError)
+    return (
+      <StyledResults>
+        <ErrorState />
+      </StyledResults>
+    )
+
+  if (isLoading)
+    return (
+      <StyledResults>
+        <LoaderState />
+      </StyledResults>
+    )
+
+  if (!data?.data)
+    return (
+      <StyledResults>
+        <NoResultsState />
+      </StyledResults>
+    )
+
   return (
     <>
       <Head>
@@ -16,7 +50,9 @@ function Services() {
       <Tabs />
 
       <main>
-        <Results services={tempTestGrabberForServices} />
+        <StyledResults>
+          <Results services={data.data} filters={{ categories, departments, search }} />
+        </StyledResults>
       </main>
     </>
   )
