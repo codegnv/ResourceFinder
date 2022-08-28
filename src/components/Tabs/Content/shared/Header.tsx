@@ -23,7 +23,7 @@ export function Header({ count, onClear }: IHeaderProps) {
       <StyledRow>
         {t('selectedItems', { count })}
         <Button onClick={onClear} variant='text'>
-          {t('clearFilters')}
+          {t('clearFilter')}
         </Button>
       </StyledRow>
       <hr />

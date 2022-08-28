@@ -2,9 +2,9 @@ import styled from '@emotion/styled'
 import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
 import { selectedCategories } from '../Tabs/Content/Categories/categoriesSlice'
-import { ITag } from './types'
-import React from 'react'
+import { selectedDepartments } from '../Tabs/Content/Departments/departmentsSlice'
 import { PaginatedResults } from './PaginatedResults'
+import { IDepartment, ITag } from './types'
 
 export interface IResultsProps {
   services: any
@@ -16,6 +16,7 @@ const StyledResults = styled.section`
 
 export function Results({ services }: IResultsProps) {
   const tagSelection = useAppSelector(selectedCategories)
+  const departmentSelection = useAppSelector(selectedDepartments)
   const { data, isError, isLoading } = services
 
   if (isError)
@@ -39,6 +40,13 @@ export function Results({ services }: IResultsProps) {
         )
       : data?.body
 
+  const filteredByDepartmentData =
+    departmentSelection.length > 0 && data?.body
+      ? filteredByTagData.filter((item: { departments: Array<IDepartment> }) =>
+          item.departments.some((department: IDepartment) => departmentSelection.includes(department.name))
+        )
+      : filteredByTagData
+
   if (!filteredByTagData || filteredByTagData?.length === 0)
     return (
       <StyledResults>
@@ -48,7 +56,7 @@ export function Results({ services }: IResultsProps) {
 
   return (
     <StyledResults>
-      <PaginatedResults data={filteredByTagData} />
+      <PaginatedResults data={filteredByDepartmentData} />
     </StyledResults>
   )
 }
