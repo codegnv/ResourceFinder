@@ -1,14 +1,14 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
-import checkboxesReducer from '../components/Checkboxes/checkboxesSlice'
-import categoriesReducer from '../components/Tabs/Categories/categoriesSlice'
-import tabsReducer from '../components/Tabs/tabsSlice'
 import searchButtonReducer from '../components/Header/Search/searchSlice'
+import categoriesReducer from '../components/Tabs/Content/Categories/categoriesSlice'
+import departmentsReducer from '../components/Tabs/Content/Departments/departmentsSlice'
+import tabsReducer from '../components/Tabs/tabsSlice'
 import { api } from './api'
 
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
-    checkboxes: checkboxesReducer,
+    departments: departmentsReducer,
     tabs: tabsReducer,
     searchButton: searchButtonReducer,
     [api.reducerPath]: api.reducer,

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-import { Checkboxes } from '../../Checkboxes'
-import { Categories } from '../Categories'
+import { Categories } from './Categories'
+import { Departments } from './Departments'
 
 export interface IContentProps {
   label: string
@@ -27,7 +27,7 @@ export function Content({ label, selected }: IContentProps) {
       exit={{ opacity: 0, y: -40 }}
     >
       {label === 'categories' && <Categories />}
-      {label === 'departments' && <Checkboxes />}
+      {label === 'departments' && <Departments />}
     </StyledContent>
   )
 }

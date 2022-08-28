@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { Tag, ITag } from './Tag'
+import { ITag } from 'src/components/Results/types'
+import { Tag } from './Tag'
 
 interface ICategoriesProps {
   selectedTags: Array<string>
