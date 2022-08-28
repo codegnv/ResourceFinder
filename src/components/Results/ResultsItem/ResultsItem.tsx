@@ -2,11 +2,11 @@ import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
 import { getNames } from '../../../utils/arrays'
 import { SmHrLine } from '../../shared/HrLine'
-import { IServices } from '../types'
+import { IService } from '../types'
 import { ItemAttribute } from './ItemAttribute'
 
 interface IResultsItemProps
-  extends Pick<IServices, 'name' | 'criteria' | 'departments' | 'description' | 'programs'> {}
+  extends Pick<IService, 'name' | 'criteria' | 'departments' | 'description' | 'programs'> {}
 
 const StyledArticle = styled.article`
   outline: none;

@@ -1,5 +1,5 @@
 // TODO: Get this into data request areas
-export interface IServices {
+export interface IService {
   id: number
   criteria: Array<ICriteria>
   departments: Array<IDepartment>

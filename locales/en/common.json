@@ -1,5 +1,6 @@
 {
   "bestSummer": "Have the best summer yet with our selection of camps and activities.",
+  "cancel": "Cancel",
   "categories": "Categories",
   "clearFilter": "Clear Filter",
   "criteria": "Criteria",
@@ -12,6 +13,7 @@
   "noResults": "No Results!",
   "offeredBy": "Offered by",
   "partOf": "Part of",
+  "searchPlaceholder": "Type your search here",
   "seeResults": "See Results",
   "selectedItems_0": "No items selected",
   "selectedItems_one": "{{count}} item selected",

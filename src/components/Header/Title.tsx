@@ -1,29 +1,28 @@
 import styled from '@emotion/styled'
+import { AnimatePresence } from 'framer-motion'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import siteLogo from '../../assets/siteLogo.svg'
-import { AiOutlineSearch } from 'react-icons/ai'
 import Link from 'next/link'
-//new imports
-import { Search } from './Search'
-import { useAppSelector } from 'src/services/hooks'
+import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { AnimatePresence } from 'framer-motion'
-import { searchButtonClicked, showSearchbar } from './Search/searchSlice'
+import { useAppSelector } from 'src/services/hooks'
+import siteLogo from '../../assets/siteLogo.svg'
+import { Search } from './Search'
+import { isSearchbarVisible, toggleSearchbarVisible } from './Search/searchSlice'
 
 export function Title() {
   const { t } = useTranslation('common')
+  const dispatch = useDispatch()
+  const clickSearchButton = useAppSelector(isSearchbarVisible)
 
   const StyledWrapper = styled.div`
-    height: 70px;
-    background-color: ${props => props.theme.colors.coolMint};
     display: flex;
-    align-items: center;
-    font-family: 'Pontano Sans';
-    font-size: 20px;
-    line-height: 20px;
+    height: 70px;
     padding: 0 20px;
     justify-content: space-between;
+    align-items: center;
+    font: 20px/20px Pontano Sans;
+    background-color: ${props => props.theme.colors.coolMint};
   `
 
   const StyledLogoTitle = styled.div`
@@ -49,9 +48,6 @@ export function Title() {
     cursor: pointer;
   `
 
-  const dispatch = useDispatch()
-  const clickSearchButton = useAppSelector(searchButtonClicked)
-
   return (
     <div>
       <StyledWrapper>
@@ -64,7 +60,7 @@ export function Title() {
           </StyledLogoTitle>
         </Link>
         <StyledSearch>
-          <StyledButton onClick={() => dispatch(showSearchbar())}>
+          <StyledButton onClick={() => dispatch(toggleSearchbarVisible())}>
             <AiOutlineSearch style={{ height: '30px', width: '30px' }} />
           </StyledButton>
         </StyledSearch>

@@ -1,62 +1,37 @@
-import styled from '@emotion/styled'
-import { useAppSelector } from '../../services/hooks'
-import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
-import { selectedCategories } from '../Tabs/Content/Categories/categoriesSlice'
-import { selectedDepartments } from '../Tabs/Content/Departments/departmentsSlice'
+import { NoResultsState } from '../shared/Status'
 import { PaginatedResults } from './PaginatedResults'
-import { IDepartment, ITag } from './types'
+import { IDepartment, IService, ITag } from './types'
 
 export interface IResultsProps {
-  services: any
+  services: Array<IService>
+  filters: {
+    categories: Array<string>
+    departments: Array<string>
+    search: string
+  }
 }
 
-const StyledResults = styled.section`
-  padding: 24px;
-`
-
-export function Results({ services }: IResultsProps) {
-  const tagSelection = useAppSelector(selectedCategories)
-  const departmentSelection = useAppSelector(selectedDepartments)
-  const { data, isError, isLoading } = services
-
-  if (isError)
-    return (
-      <StyledResults>
-        <ErrorState />
-      </StyledResults>
-    )
-
-  if (isLoading)
-    return (
-      <StyledResults>
-        <LoaderState />
-      </StyledResults>
-    )
-
+export function Results({ services, filters }: IResultsProps) {
   const filteredByTagData =
-    tagSelection.length > 0 && data?.body
-      ? data.body.filter((item: { tags: Array<ITag> }) =>
-          item.tags.some((tag: ITag) => tagSelection.includes(tag.name))
+    filters.categories.length > 0 && services
+      ? services.filter((item: { tags: Array<ITag> }) =>
+          item.tags.some((tag: ITag) => filters.categories.includes(tag.name))
         )
-      : data?.body
+      : services
 
   const filteredByDepartmentData =
-    departmentSelection.length > 0 && data?.body
+    filters.departments.length > 0 && filteredByTagData
       ? filteredByTagData.filter((item: { departments: Array<IDepartment> }) =>
-          item.departments.some((department: IDepartment) => departmentSelection.includes(department.name))
+          item.departments.some((department: IDepartment) => filters.departments.includes(department.name))
         )
       : filteredByTagData
 
-  if (!filteredByTagData || filteredByTagData?.length === 0)
-    return (
-      <StyledResults>
-        <NoResultsState />
-      </StyledResults>
-    )
+  const filteredBySearchData =
+    filters.search.length > 0 && filteredByDepartmentData
+      ? filteredByDepartmentData.filter(job => job.name.toLowerCase().includes(filters.search.toLowerCase()))
+      : filteredByDepartmentData
 
-  return (
-    <StyledResults>
-      <PaginatedResults data={filteredByDepartmentData} />
-    </StyledResults>
-  )
+  if (!filteredBySearchData || filteredBySearchData?.length === 0) return <NoResultsState />
+
+  return <PaginatedResults data={filteredBySearchData} />
 }

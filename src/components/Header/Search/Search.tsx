@@ -1,52 +1,62 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
+import useTranslation from 'next-translate/useTranslation'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { closeSearchbar } from './searchSlice'
-import { motion } from 'framer-motion'
+import { Button } from 'src/components/shared/Button'
+import { closeSearchbar, updateSearchText } from './searchSlice'
 
 export function Search() {
+  const dispatch = useDispatch()
+  const { t } = useTranslation('common')
+
   const StyledWrapper = styled(motion.div)`
     display: flex;
+    position: relative;
     align-items: center;
-    font-family: 'Pontano Sans';
-    font-size: 20px;
-    line-height: 20px;
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
+    border: ${props => `${props.theme.colors.baseDark} 1px solid`};
   `
+
   const StyledLogoWrapper = styled.div`
-    background-color: ${props => props.theme.colors.secondary};
-    height: 57px;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1pt black solid;
+    height: 57px;
     width: 31px;
+    background-color: ${props => props.theme.colors.secondary};
+    border-left: ${props => `${props.theme.colors.secondary} 1px solid`};
+    border-right: ${props => `${props.theme.colors.baseDark} 1px solid`};
+    font-size: 20px;
   `
 
-  const StyledInputWrapper = styled.div`
-    width: 100%;
-    position: relative;
-  `
   const StyledInput = styled.input`
+    display: block;
     width: 100%;
     height: 57px;
-    position: relative;
-    text-indent: 20px;
-    font-size: 15px;
-    font-family: 'Pontano Sans';
+    padding: 0 90px 0 40px;
+    border: none;
+    font: 16px Pontano Sans;
   `
-  const StyledCancelButton = styled.button`
+
+  const StyledCancelButton = styled(Button)`
     position: absolute;
     right: 15px;
-    top: 33%;
-    background-color: white;
-    border: none;
-    font-weight: bold;
-    color: ${props => props.theme.colors.primary};
-    cursor: pointer;
+    top: 22px;
   `
-  const dispatch = useDispatch()
+
+  const handleCancel = () => {
+    dispatch(closeSearchbar())
+    dispatch(updateSearchText(''))
+  }
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateSearchText(event.target.value))
+  }
 
   return (
     <StyledWrapper
@@ -56,12 +66,12 @@ export function Search() {
       exit={{ opacity: 0, y: -10 }}
     >
       <StyledLogoWrapper>
-        <AiOutlineSearch></AiOutlineSearch>
+        <AiOutlineSearch />
       </StyledLogoWrapper>
-      <StyledInputWrapper>
-        <StyledInput type='text' placeholder='Type your search here'></StyledInput>
-        <StyledCancelButton onClick={() => dispatch(closeSearchbar())}>CANCEL</StyledCancelButton>
-      </StyledInputWrapper>
+      <StyledInput type='text' placeholder={t('searchPlaceholder')} onChange={handleInputChange} />
+      <StyledCancelButton variant='text' onClick={handleCancel}>
+        {t('cancel')}
+      </StyledCancelButton>
     </StyledWrapper>
   )
 }
