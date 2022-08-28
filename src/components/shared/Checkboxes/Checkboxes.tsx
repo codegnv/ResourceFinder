@@ -1,44 +1,30 @@
 import styled from '@emotion/styled'
-import { useDispatch } from 'react-redux'
-import { useGetAllDepartmentsQuery } from '../../../services/api'
-import { useAppSelector } from '../../../services/hooks'
-import { LoaderState } from '../Status'
+import { ICheckbox } from 'src/components/Results/types'
 import { Checkbox } from './Checkbox'
-import { selectedCheckboxes, toggleCheckboxSelection } from './checkboxesSlice'
 
 const StyledCheckboxes = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 25px;
-  max-height: 250px;
-  overflow-x: scroll;
+  gap: 20px;
 `
 
-export function Checkboxes() {
-  const dispatch = useDispatch()
-  const { data, isError, isLoading } = useGetAllDepartmentsQuery('')
-  const checkboxSelection = useAppSelector(selectedCheckboxes)
+interface ICheckboxesProps {
+  selectedItems: Array<string>
+  items: Array<ICheckbox>
+  onChange: (value: string) => void
+}
 
-  const handleOnClick = (value: string) => {
-    dispatch(toggleCheckboxSelection(value))
-  }
-
+export function Checkboxes({ selectedItems, items, onChange }: ICheckboxesProps) {
   return (
     <StyledCheckboxes>
-      {isError ? (
-        <>Oh no, there was an error</>
-      ) : isLoading ? (
-        <LoaderState />
-      ) : data ? (
-        data?.data?.map(checkbox => (
-          <Checkbox
-            key={checkbox.id}
-            checkbox={checkbox}
-            selected={checkboxSelection.includes(checkbox.name)}
-            onClick={handleOnClick}
-          />
-        ))
-      ) : null}
+      {items.map(checkbox => (
+        <Checkbox
+          key={checkbox.id}
+          checkbox={checkbox}
+          selected={selectedItems.includes(checkbox.name)}
+          onChange={onChange}
+        />
+      ))}
     </StyledCheckboxes>
   )
 }

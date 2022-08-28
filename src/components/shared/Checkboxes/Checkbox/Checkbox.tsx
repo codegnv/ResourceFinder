@@ -1,50 +1,50 @@
 import styled from '@emotion/styled'
 import { GrClose } from 'react-icons/gr'
+import { ICheckbox } from 'src/components/Results/types'
 
 export interface ICheckboxProps {
-  checkbox: {
-    id: number
-    name: string
-  }
+  checkbox: ICheckbox
   selected: boolean
-  onClick: (value: string) => void
+  onChange: (value: string) => void
 }
 
-const StyledCheckbox = styled.button<Pick<ICheckboxProps, 'selected'>>`
-  border: hidden;
-  background-color: ${props => props.theme.colors.ltGray};
-  border-radius: 5px;
-  display: inline-flex;
-  padding: 8px;
-  justify-content: left;
-  align-items: top;
-  flex-direction: row;
-  cursor: pointer;
+const StyledCheckboxItem = styled.div`
+  position: relative;
 `
-const StyledLabel = styled.span`
-  margin-left: 12px;
-  display: flex;
-  text-align: left;
+const StyledLabel = styled.label`
+  margin-left: 36px;
   font: normal normal normal 18px Pontano Sans;
 `
 
-// Add the border color later in theme
-const StyledBox = styled.div<Pick<ICheckboxProps, 'selected'>>`
+const StyledInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+`
+const StyledCheckbox = styled.span<Pick<ICheckboxProps, 'selected'>>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 24px;
-  flex-shrink: 0;
+  width: 24px;
   background-color: ${props => (props.selected ? props.theme.colors.secondary : 'white')};
-  border: ${props => (props.selected ? 'none' : `#8D9297 1pt solid`)}; ;
+  border: ${props =>
+    props.selected ? `${props.theme.colors.secondary} 1pt solid` : `${props.theme.colors.gray} 1pt solid`};
 `
 
-export function Checkbox({ checkbox: { name }, selected, onClick }: ICheckboxProps) {
+export function Checkbox({ checkbox: { name }, selected, onChange }: ICheckboxProps) {
   return (
-    <StyledCheckbox onClick={() => onClick(name)} selected={selected}>
-      <StyledBox selected={selected}>{selected && <GrClose size='17px' />}</StyledBox>
-      <StyledLabel>{name}</StyledLabel>
-    </StyledCheckbox>
+    <StyledCheckboxItem>
+      <StyledLabel>
+        <StyledInput type='checkbox' checked={selected} onChange={() => onChange(name)} />
+        <StyledCheckbox selected={selected}>{selected && <GrClose size='17px' />}</StyledCheckbox>
+        {name}
+      </StyledLabel>
+    </StyledCheckboxItem>
   )
 }

@@ -36,3 +36,8 @@ export interface ITag {
   preferred_desktop: boolean
   preferred_mobile: boolean
 }
+
+export interface ICheckbox {
+  id: number
+  name: string
+}

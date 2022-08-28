@@ -1,11 +1,6 @@
 import styled from '@emotion/styled'
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
-
-export interface ITag {
-  id: number
-  name: string
-  preferred: boolean
-}
+import { ITag } from 'src/components/Results/types'
 
 export interface ITagProps {
   selected: boolean

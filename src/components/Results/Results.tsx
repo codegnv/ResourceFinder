@@ -34,7 +34,7 @@ export function Results({ services }: IResultsProps) {
 
   const filteredByTagData =
     tagSelection.length > 0 && data?.body
-      ? data.body.filter((item: { tags: ITag[] }) =>
+      ? data.body.filter((item: { tags: Array<ITag> }) =>
           item.tags.some((tag: ITag) => tagSelection.includes(tag.name))
         )
       : data?.body
