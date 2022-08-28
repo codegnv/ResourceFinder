@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useAppSelector } from '../../services/hooks'
 import { ErrorState, LoaderState, NoResultsState } from '../shared/Status'
-import { selectedCategories } from '../Tabs/Categories/categoriesSlice'
+import { selectedCategories } from '../Tabs/Content/Categories/categoriesSlice'
 import { ITag } from './types'
 import React from 'react'
 import { PaginatedResults } from './PaginatedResults'

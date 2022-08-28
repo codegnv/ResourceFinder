@@ -1,7 +1,7 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import searchButtonReducer from '../components/Header/Search/searchSlice'
-import categoriesReducer from '../components/Tabs/Categories/categoriesSlice'
-import departmentsReducer from '../components/Tabs/Departments/departmentsSlice'
+import categoriesReducer from '../components/Tabs/Content/Categories/categoriesSlice'
+import departmentsReducer from '../components/Tabs/Content/Departments/departmentsSlice'
 import tabsReducer from '../components/Tabs/tabsSlice'
 import { api } from './api'
 

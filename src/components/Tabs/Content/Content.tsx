@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-import { Categories } from '../Categories'
-import { Departments } from '../Departments'
+import { Categories } from './Categories'
+import { Departments } from './Departments'
 
 export interface IContentProps {
   label: string

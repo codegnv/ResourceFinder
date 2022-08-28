@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import { Button } from '../../shared/Button'
+import { Button } from '../../../shared/Button'
 
 export interface ICategoriesFooterProps {
   hideBottomDivider?: boolean
@@ -13,7 +13,7 @@ const StyledCategoriesFooter = styled.div`
   margin-top: 20px;
 `
 
-export function CategoriesFooter({ hideBottomDivider, onClick }: ICategoriesFooterProps) {
+export function Footer({ hideBottomDivider, onClick }: ICategoriesFooterProps) {
   const { t } = useTranslation('common')
 
   return (

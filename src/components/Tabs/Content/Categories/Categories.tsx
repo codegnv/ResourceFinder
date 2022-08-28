@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { useGetAllTagsQuery } from '../../../services/api'
-import { useAppSelector } from '../../../services/hooks'
-import { ErrorState, LoaderState, NoResultsState } from '../../shared/Status'
-import { Tags } from '../../shared/Tags'
-import { clearTabSelection } from '../tabsSlice'
-import { CategoriesFooter } from './CategoriesFooter'
-import { CategoriesHeader } from './CategoriesHeader'
+import { useGetAllTagsQuery } from '../../../../services/api'
+import { useAppSelector } from '../../../../services/hooks'
+import { ErrorState, LoaderState, NoResultsState } from '../../../shared/Status'
+import { Tags } from '../../../shared/Tags'
+import { clearTabSelection } from '../../tabsSlice'
+import { Footer } from '../shared/Footer'
+import { Header } from '../shared/Header'
 import { clearTagSelection, selectedCategories, toggleTagSelection } from './categoriesSlice'
 
 interface ICategoriesProps {
@@ -65,11 +65,11 @@ export function Categories({ variant = 'default' }: ICategoriesProps) {
 
   return (
     <section>
-      {variant === 'default' && <CategoriesHeader count={selectedTags.length} onClear={handleOnClearTags} />}
+      {variant === 'default' && <Header count={selectedTags.length} onClear={handleOnClearTags} />}
       <StyledCategories>
         <Tags tags={filteredTags || data.data} selectedTags={selectedTags} onClick={handleOnClick} />
       </StyledCategories>
-      <CategoriesFooter hideBottomDivider={variant !== 'default'} onClick={handleOnClearTabs} />
+      <Footer hideBottomDivider={variant !== 'default'} onClick={handleOnClearTabs} />
     </section>
   )
 }

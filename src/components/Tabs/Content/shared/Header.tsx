@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
-import { Button } from '../../shared/Button'
+import { Button } from '../../../shared/Button'
 
-export interface ICategoriesHeaderProps {
+export interface IHeaderProps {
   count: number
   onClear: () => void
 }
 
-const StyledCategoriesHeader = styled.div`
+const StyledHeader = styled.div`
   margin-bottom: 25px;
 `
 const StyledRow = styled.div`
@@ -16,10 +16,10 @@ const StyledRow = styled.div`
   margin-bottom: 20px;
 `
 
-export function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
+export function Header({ count, onClear }: IHeaderProps) {
   const { t } = useTranslation('common')
   return (
-    <StyledCategoriesHeader>
+    <StyledHeader>
       <StyledRow>
         {t('selectedItems', { count })}
         <Button onClick={onClear} variant='text'>
@@ -27,6 +27,6 @@ export function CategoriesHeader({ count, onClear }: ICategoriesHeaderProps) {
         </Button>
       </StyledRow>
       <hr />
-    </StyledCategoriesHeader>
+    </StyledHeader>
   )
 }
