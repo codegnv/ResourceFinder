@@ -17,21 +17,11 @@ const StyledA = styled.a`
     font: normal normal 14px/28px Inter;
 `
 
-const StyledFooterHrLine = styled.hr`
-  border: none;
-  height: 1px;
-  margin: 0px;
-  color: ${props => props.theme.colors.baseLight};
-  background-color: ${props => props.theme.colors.baseLight};
-`
-
-// TODO only active link if not on /about already
 export function Footer() {
   const { t } = useTranslation('common')
 
   return (
     <>
-        <StyledFooterHrLine />
         <StyledBTF>
             <StyledA onClick={() => router.push('/about')}>
                 {t('about')}

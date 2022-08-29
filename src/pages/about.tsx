@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from 'next/head'
 import { Footer } from '../components/Footer'
-import styled from '@emotion/styled'
-import useTranslation from 'next-translate/useTranslation'
 import { About } from '../components/AboutPage/About'
 
 function AboutPage() {

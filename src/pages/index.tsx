@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import { Hero } from '../components/LandingPage/Hero'
 import { Footer } from '../components/Footer'
-import { SmHrLine } from '../components/shared/HrLine'
 import { useGetAllDepartmentsQuery, useGetAllTagsQuery } from '../services/api'
 
 function Home() {

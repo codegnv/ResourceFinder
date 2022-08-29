@@ -5,6 +5,7 @@ import router from 'next/router'
 import summer from '../../../assets/summer.png'
 import { Button } from '../../shared/Button'
 import { Categories } from '../../Tabs/Content/Categories'
+import { SmBaseLightHrLine } from '../../shared/HrLine'
 
 const StyledHero = styled.section`
   padding: 32px 24px;
@@ -57,6 +58,7 @@ export function Hero() {
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
         <Categories variant='mobileMain' />
+        <SmBaseLightHrLine />
       </StyledBTF>
     </>
   )

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export interface IHrLineProps {
-  height: HrHeight | number
+  height: HrHeight | number,
 }
 
 enum HrHeight {
@@ -10,27 +10,50 @@ enum HrHeight {
   LgHeight = 5,
 }
 
-const StyledHrLine = styled.hr<IHrLineProps>`
+const StyledSecondaryHrLine = styled.hr<IHrLineProps>`
   border: none;
   height: ${props => props.height.toString()}px;
   color: ${props => props.theme.colors.secondary};
   background-color: ${props => props.theme.colors.secondary};
 `
 
+const StyledBaseHrLine = styled.hr<IHrLineProps>`
+  border: none;
+  height: ${props => props.height.toString()}px;
+  color: ${props => props.theme.colors.base};
+  background-color: ${props => props.theme.colors.base};
+`
+
+const StyledBaseLightHrLine = styled.hr<IHrLineProps>`
+  border: none;
+  height: ${props => props.height.toString()}px;
+  color: ${props => props.theme.colors.baseLight};
+  background-color: ${props => props.theme.colors.baseLight};
+`
+
+
 function HrLine({ height = 1 }: IHrLineProps) {
-  return <StyledHrLine height={height} />
+  return <StyledSecondaryHrLine height={height} />
 }
 
 function SmHrLine() {
-  return <StyledHrLine height={HrHeight.SmHeight} />
+  return <StyledSecondaryHrLine height={HrHeight.SmHeight} />
 }
 
 function MedHrLine() {
-  return <StyledHrLine height={HrHeight.MedHeight} />
+  return <StyledSecondaryHrLine height={HrHeight.MedHeight} />
 }
 
 function LgHrLine() {
-  return <StyledHrLine height={HrHeight.LgHeight} />
+  return <StyledSecondaryHrLine height={HrHeight.LgHeight} />
 }
 
-export { HrLine, SmHrLine, MedHrLine, LgHrLine }
+function SmBaseHrLine() {
+  return <StyledBaseHrLine height={HrHeight.SmHeight} />
+}
+
+function SmBaseLightHrLine() {
+  return <StyledBaseLightHrLine height={HrHeight.SmHeight} />
+}
+
+export { HrLine, SmHrLine, MedHrLine, LgHrLine, SmBaseHrLine, SmBaseLightHrLine }
