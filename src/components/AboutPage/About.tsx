@@ -12,7 +12,7 @@ const StyledAbout = styled.section`
 `
 
 const StyledAboutHeader = styled.section`
-margin: 16px 0;
+  margin: 16px 0;
   font: normal normal normal 22px/32px Pontano Sans;
 `
 
@@ -30,50 +30,32 @@ export function About() {
 
   return (
     <>
-        <StyledAbout>
-            {t('aboutResourceFinder')}
-            <StyledAboutHeader>
-                {t('aboutC4GnvHeader')}
-            </StyledAboutHeader>
-            <StyledAboutPara>
-                {t('aboutC4GnvPara1')}
-            </StyledAboutPara>
-            <StyledAboutPara>
-                {t('aboutC4GnvPara2')}
-            </StyledAboutPara>
-            <StyledButton variant='arrowText' onClick={() => router.push('/')} >
-                {t('aboutC4GnvLink')}
-            </StyledButton>
-            <SmBaseHrLine />
+      <StyledAbout>
+        {t('aboutResourceFinder')}
+        <StyledAboutHeader>{t('aboutC4GnvHeader')}</StyledAboutHeader>
+        <StyledAboutPara>{t('aboutC4GnvPara1')}</StyledAboutPara>
+        <StyledAboutPara>{t('aboutC4GnvPara2')}</StyledAboutPara>
+        <StyledButton variant='arrowText' onClick={() => router.push('/')}>
+          {t('aboutC4GnvLink')}
+        </StyledButton>
+        <SmBaseHrLine />
 
-            <StyledAboutHeader>
-                {t('aboutGnvHeader')}
-            </StyledAboutHeader>
-            <StyledAboutPara>
-                {t('aboutGnvPara1')}
-            </StyledAboutPara>
-            <StyledAboutPara>
-                {t('aboutGnvPara2')}
-            </StyledAboutPara>
-            <StyledButton variant='arrowText' onClick={() => router.push('/')} >
-                {t('aboutGnvLink')}
-            </StyledButton>
-            <SmBaseHrLine />
+        <StyledAboutHeader>{t('aboutGnvHeader')}</StyledAboutHeader>
+        <StyledAboutPara>{t('aboutGnvPara1')}</StyledAboutPara>
+        <StyledAboutPara>{t('aboutGnvPara2')}</StyledAboutPara>
+        <StyledButton variant='arrowText' onClick={() => router.push('/')}>
+          {t('aboutGnvLink')}
+        </StyledButton>
+        <SmBaseHrLine />
 
-            <Image src={mygnv} alt='myGNV logo' width='209px' height='55px' />
-            <StyledAboutHeader>
-                {t('aboutMyGnvHeader')}
-            </StyledAboutHeader>
-            <StyledAboutPara>
-                {t('aboutMyGnvPara1')}
-            </StyledAboutPara>
-            <StyledAboutPara>
-                {t('aboutMyGnvPara2')}
-            </StyledAboutPara>
-            <StyledButton variant='arrowText' onClick={() => router.push('/')} >
-                {t('aboutMyGnvLink')}
-            </StyledButton>
-        </StyledAbout>
+        <Image src={mygnv} alt='myGNV logo' width='209px' height='55px' />
+        <StyledAboutHeader>{t('aboutMyGnvHeader')}</StyledAboutHeader>
+        <StyledAboutPara>{t('aboutMyGnvPara1')}</StyledAboutPara>
+        <StyledAboutPara>{t('aboutMyGnvPara2')}</StyledAboutPara>
+        <StyledButton variant='arrowText' onClick={() => router.push('/')}>
+          {t('aboutMyGnvLink')}
+        </StyledButton>
+      </StyledAbout>
     </>
   )
 }

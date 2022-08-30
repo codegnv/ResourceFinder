@@ -13,8 +13,8 @@ const StyledBTF = styled.section`
 `
 
 const StyledA = styled.a`
-    cursor: pointer;
-    font: normal normal 14px/28px Inter;
+  cursor: pointer;
+  font: normal normal 14px/28px Inter;
 `
 
 export function Footer() {
@@ -22,12 +22,10 @@ export function Footer() {
 
   return (
     <>
-        <StyledBTF>
-            <StyledA onClick={() => router.push('/about')}>
-                {t('about')}
-            </StyledA>
-            {t('officialWebsite')}
-        </StyledBTF>
+      <StyledBTF>
+        <StyledA onClick={() => router.push('/about')}>{t('about')}</StyledA>
+        {t('officialWebsite')}
+      </StyledBTF>
     </>
   )
 }

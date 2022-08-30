@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export interface IHrLineProps {
-  height: HrHeight | number,
+  height: HrHeight | number
 }
 
 enum HrHeight {
@@ -30,7 +30,6 @@ const StyledBaseLightHrLine = styled.hr<IHrLineProps>`
   color: ${props => props.theme.colors.baseLight};
   background-color: ${props => props.theme.colors.baseLight};
 `
-
 
 function HrLine({ height = 1 }: IHrLineProps) {
   return <StyledSecondaryHrLine height={height} />
