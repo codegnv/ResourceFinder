@@ -41,6 +41,10 @@ const StyledSuggestion = styled.div`
   letter-spacing: 1.3px;
 `
 
+const StyledMargin = styled.div`
+  margin-top: 70px;
+`
+
 export function Hero() {
   const { t } = useTranslation('common')
 
@@ -58,6 +62,7 @@ export function Hero() {
         <StyledBestSummer>{t('bestSummer')}</StyledBestSummer>
         <StyledSuggestion>{t('mayWeSuggest')}</StyledSuggestion>
         <Categories variant='mobileMain' />
+        <StyledMargin />
         <SmBaseLightHrLine />
       </StyledBTF>
     </>
