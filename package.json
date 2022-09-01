@@ -6,7 +6,12 @@
     "email": "eric@hosford.me",
     "url": "https://hosford.me"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Jack Wharton",
+      "email": "jackrwharton@gmail.com"
+    }
+  ],
   "version": "0.1.0",
   "private": true,
   "scripts": {
