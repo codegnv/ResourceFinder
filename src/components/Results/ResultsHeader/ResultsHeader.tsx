@@ -21,6 +21,7 @@ export function ResultsHeader({ begin, end, total }: IResultsHeaderProps) {
     dispatch(clearTagSelection())
     dispatch(closeSearchbar())
     dispatch(updateSearchText(''))
+    //TODO: add dispatch for criteria when criteria is created
   }
 
   const StyledButton = styled(Button)``
