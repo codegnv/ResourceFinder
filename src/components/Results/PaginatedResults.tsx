@@ -4,6 +4,10 @@ import ReactPaginate from 'react-paginate'
 import { ResultsHeader } from './ResultsHeader'
 import { ResultsItem } from './ResultsItem'
 import { IService } from './types'
+import { useDispatch } from 'react-redux'
+import { clearDepartmentsSelection } from 'src/components/Tabs/Content/Departments/departmentsSlice'
+import { clearTagSelection } from 'src/components/Tabs/Content/Categories/categoriesSlice'
+import { closeSearchbar, updateSearchText } from 'src/components/Header/Search/searchSlice'
 
 interface IPaginatedResultsProps {
   data: Array<IService>
@@ -38,6 +42,7 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
   const [currentItems, setCurrentItems] = React.useState(data)
   const [pageCount, setPageCount] = React.useState(0)
   const [itemOffset, setItemOffset] = React.useState(0)
+  const dispatch = useDispatch()
 
   React.useEffect(() => {
     const endOffset = itemOffset + itemsPerPage
@@ -48,6 +53,14 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
   React.useEffect(() => {
     setItemOffset(0)
   }, [data])
+
+  const handleClearAllResults = () => {
+    dispatch(clearDepartmentsSelection())
+    dispatch(clearTagSelection())
+    dispatch(closeSearchbar())
+    dispatch(updateSearchText(''))
+    //TODO: add dispatch for criteria when criteria is created
+  }
 
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length
@@ -85,6 +98,7 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
             : data.length
         }
         total={data.length}
+        onClearFilters={handleClearAllResults}
       />
       {ResultsItems}
       {data.length > itemsPerPage && (
