@@ -11,6 +11,7 @@ import { closeSearchbar, updateSearchText } from 'src/components/Header/Search/s
 
 interface IPaginatedResultsProps {
   data: Array<IService>
+  services: Array<IService>
   itemsPerPage?: number
 }
 
@@ -38,7 +39,7 @@ const StyledReactPaginate = styled(ReactPaginate)`
   }
 `
 
-export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsProps) {
+export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginatedResultsProps) {
   const [currentItems, setCurrentItems] = React.useState(data)
   const [pageCount, setPageCount] = React.useState(0)
   const [itemOffset, setItemOffset] = React.useState(0)
@@ -54,7 +55,7 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
     setItemOffset(0)
   }, [data])
 
-  const handleClearAllResults = () => {
+  const handleClearAllFilters = () => {
     dispatch(clearDepartmentsSelection())
     dispatch(clearTagSelection())
     dispatch(closeSearchbar())
@@ -98,7 +99,8 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
             : data.length
         }
         total={data.length}
-        onClearFilters={handleClearAllResults}
+        clearAllFilters={handleClearAllFilters}
+        filtersApplied={services.length != data.length ? true : false}
       />
       {ResultsItems}
       {data.length > itemsPerPage && (

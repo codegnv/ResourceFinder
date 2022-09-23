@@ -33,5 +33,5 @@ export function Results({ services, filters }: IResultsProps) {
 
   if (!filteredBySearchData || filteredBySearchData?.length === 0) return <NoResultsState />
 
-  return <PaginatedResults data={filteredBySearchData} />
+  return <PaginatedResults data={filteredBySearchData} services={services} />
 }

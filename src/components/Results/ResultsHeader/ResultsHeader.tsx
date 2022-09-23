@@ -8,10 +8,11 @@ export interface IResultsHeaderProps {
   begin: number
   end: number
   total: number
-  onClearFilters: any
+  clearAllFilters: any
+  filtersApplied: boolean
 }
 
-export function ResultsHeader({ begin, end, total, onClearFilters }: IResultsHeaderProps) {
+export function ResultsHeader({ begin, end, total, clearAllFilters, filtersApplied }: IResultsHeaderProps) {
   const { t } = useTranslation('common')
 
   const StyledWrapper = styled.div`
@@ -28,9 +29,11 @@ export function ResultsHeader({ begin, end, total, onClearFilters }: IResultsHea
           </span>{' '}
           of <span style={{ fontWeight: 'bold' }}>{total.toLocaleString()}</span> results
         </div>
-        <Button variant='text' onClick={onClearFilters}>
-          {t('clearAllFilters')}
-        </Button>
+        {filtersApplied === true ? (
+          <Button variant='text' onClick={clearAllFilters}>
+            {t('clearAllFilters')}
+          </Button>
+        ) : null}
       </StyledWrapper>
       <MedHrLine />
     </>
