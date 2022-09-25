@@ -10,6 +10,16 @@
     {
       "name": "Jack Wharton",
       "email": "jackrwharton@gmail.com"
+    },
+    {
+      "name": "Jacob Potter",
+      "email": "CJacobPotter@gmail.com",
+      "url": "https://github.com/CowboyAragorn"
+    },
+    {
+      "name": "Hunter Uman",
+      "email": "hunteruman@gmail.com",
+      "url": "https://github.com/hunteruman"
     }
   ],
   "version": "0.1.0",

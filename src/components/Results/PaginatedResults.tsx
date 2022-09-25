@@ -4,9 +4,14 @@ import ReactPaginate from 'react-paginate'
 import { ResultsHeader } from './ResultsHeader'
 import { ResultsItem } from './ResultsItem'
 import { IService } from './types'
+import { useDispatch } from 'react-redux'
+import { clearDepartmentsSelection } from 'src/components/Tabs/Content/Departments/departmentsSlice'
+import { clearTagSelection } from 'src/components/Tabs/Content/Categories/categoriesSlice'
+import { closeSearchbar, updateSearchText } from 'src/components/Header/Search/searchSlice'
 
 interface IPaginatedResultsProps {
   data: Array<IService>
+  services: Array<IService>
   itemsPerPage?: number
 }
 
@@ -34,10 +39,11 @@ const StyledReactPaginate = styled(ReactPaginate)`
   }
 `
 
-export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsProps) {
+export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginatedResultsProps) {
   const [currentItems, setCurrentItems] = React.useState(data)
   const [pageCount, setPageCount] = React.useState(0)
   const [itemOffset, setItemOffset] = React.useState(0)
+  const dispatch = useDispatch()
 
   React.useEffect(() => {
     const endOffset = itemOffset + itemsPerPage
@@ -48,6 +54,14 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
   React.useEffect(() => {
     setItemOffset(0)
   }, [data])
+
+  const handleClearAllFilters = () => {
+    dispatch(clearDepartmentsSelection())
+    dispatch(clearTagSelection())
+    dispatch(closeSearchbar())
+    dispatch(updateSearchText(''))
+    //TODO: add dispatch for criteria when criteria is created
+  }
 
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length
@@ -85,6 +99,8 @@ export function PaginatedResults({ itemsPerPage = 10, data }: IPaginatedResultsP
             : data.length
         }
         total={data.length}
+        clearAllFilters={handleClearAllFilters}
+        filtersApplied={services.length != data.length ? true : false}
       />
       {ResultsItems}
       {data.length > itemsPerPage && (
