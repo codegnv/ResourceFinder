@@ -8,8 +8,8 @@ export interface IResultsHeaderProps {
   begin: number
   end: number
   total: number
-  clearAllFilters: any
   filtersApplied: boolean
+  clearAllFilters: () => void
 }
 
 export function ResultsHeader({ begin, end, total, clearAllFilters, filtersApplied }: IResultsHeaderProps) {
@@ -29,7 +29,7 @@ export function ResultsHeader({ begin, end, total, clearAllFilters, filtersAppli
           </span>{' '}
           of <span style={{ fontWeight: 'bold' }}>{total.toLocaleString()}</span> results
         </div>
-        {filtersApplied === true ? (
+        {filtersApplied ? (
           <Button variant='text' onClick={clearAllFilters}>
             {t('clearAllFilters')}
           </Button>
