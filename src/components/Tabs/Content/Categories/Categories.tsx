@@ -9,6 +9,7 @@ import { clearTabSelection } from '../../tabsSlice'
 import { Footer } from '../shared/Footer'
 import { Header } from '../shared/Header'
 import { clearTagSelection, selectedCategories, toggleTagSelection } from './categoriesSlice'
+import ReactGA from "react-ga4";
 
 interface ICategoriesProps {
   variant?: 'mobileMain' | 'desktopMain' | 'default'
@@ -22,6 +23,9 @@ const StyledCategories = styled.div`
 `
 
 export function Categories({ variant = 'default' }: ICategoriesProps) {
+  ReactGA.initialize('G-5Y6YSVZN7Z');
+  ReactGA.send("pageview");
+
   const router = useRouter()
   const dispatch = useDispatch()
   const { data, isError, isLoading } = useGetAllTagsQuery(undefined)
