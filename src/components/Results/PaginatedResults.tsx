@@ -84,6 +84,9 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
       programs={item.programs}
       departments={item.departments}
       key={item.name}
+      has_age_requirement={item.has_age_requirement}
+      has_fee_requirement={item.has_fee_requirement}
+      has_income_requirement={item.has_income_requirement}
     />
   ))
 

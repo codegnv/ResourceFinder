@@ -7,6 +7,9 @@ export interface IService {
   name: string
   programs: Array<IProgram>
   tags: Array<ITag>
+  has_age_requirement: boolean
+  has_fee_requirement: boolean
+  has_income_requirement: boolean
 }
 
 export interface ICriteria {
