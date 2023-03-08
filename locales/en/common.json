@@ -36,5 +36,5 @@
   "selectedItems_one": "{{count}} item selected",
   "selectedItems_other": "{{count}} items selected",
   "siteTitle": "Resource Finder",
-  "": "Start Your Search Here"
+  "startSearch": "Start Your Search Here"
 }
