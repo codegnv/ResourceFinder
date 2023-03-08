@@ -4,9 +4,10 @@ import { getNames } from '../../../utils/arrays'
 import { SmHrLine } from '../../shared/HrLine'
 import { IService } from '../types'
 import { ItemAttribute } from './ItemAttribute'
+import { Button } from '../../shared/Button'
 
 interface IResultsItemProps
-  extends Pick<IService, 'name' | 'criteria' | 'departments' | 'description' | 'programs'> {}
+  extends Pick<IService, 'name' | 'criteria' | 'departments' | 'description' | 'programs' | 'link'> {}
 
 const StyledArticle = styled.article`
   outline: none;
@@ -20,7 +21,11 @@ const StyledDescription = styled.p`
   margin-bottom: 12px;
   outline: none;
 `
-export function ResultsItem({ name, criteria, description, departments, programs }: IResultsItemProps) {
+const StyledButton = styled(Button)`
+  margin-top: 35px;
+`
+
+export function ResultsItem({ name, criteria, description, departments, programs, link }: IResultsItemProps) {
   const { t } = useTranslation('common')
 
   return (
@@ -32,6 +37,9 @@ export function ResultsItem({ name, criteria, description, departments, programs
         <ItemAttribute header={t('partOf')} items={getNames(programs)} />
         <ItemAttribute header={t('criteria')} items={getNames(criteria)} />
       </section>
+      <StyledButton variant='arrowText' onClick={() => window.open(link, '_blank')}>
+        {t('getMoreInfo')}
+      </StyledButton>
       <SmHrLine />
     </StyledArticle>
   )

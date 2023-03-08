@@ -21,6 +21,7 @@
   "criteria": "Criteria",
   "departments": "Departments",
   "error": "Oh no! An error has occurred",
+  "getMoreInfo": "Get more information",
   "heroCTA": "Start your search and see what the city can do for you.",
   "heroText": "The City of Gainesville offers a range of programs and services for all neighbors. Choose from wellness, financial services, youth activities and more.",
   "loading": "Loading...",
@@ -35,5 +36,5 @@
   "selectedItems_one": "{{count}} item selected",
   "selectedItems_other": "{{count}} items selected",
   "siteTitle": "Resource Finder",
-  "startSearch": "Start Your Search Here"
+  "": "Start Your Search Here"
 }
