@@ -7,6 +7,7 @@ export interface IService {
   name: string
   programs: Array<IProgram>
   tags: Array<ITag>
+  link: string
 }
 
 export interface ICriteria {

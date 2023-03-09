@@ -84,6 +84,7 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
       programs={item.programs}
       departments={item.departments}
       key={item.name}
+      link={item.link}
     />
   ))
 
