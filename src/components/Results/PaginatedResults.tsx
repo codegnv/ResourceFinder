@@ -76,15 +76,16 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
 
   const ResultsItems = currentItems.map(item => (
     <ResultsItem
-      name={item.name}
       criteria={item.criteria}
-      description={item.description}
-      programs={item.programs}
       departments={item.departments}
-      key={item.name}
+      description={item.description}
       has_age_requirement={item.has_age_requirement}
       has_fee_requirement={item.has_fee_requirement}
       has_income_requirement={item.has_income_requirement}
+      key={item.name}
+      link={item.link}
+      name={item.name}
+      programs={item.programs}
     />
   ))
 
@@ -99,9 +100,9 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
               : data.length
             : data.length
         }
-        total={data.length}
         clearAllFilters={handleClearAllFilters}
         filtersApplied={services.length != data.length ? true : false}
+        total={data.length}
       />
       {ResultsItems}
       {data.length > itemsPerPage && (

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import useTranslation from 'next-translate/useTranslation'
 import { getNames } from '../../../utils/arrays'
+import { Button } from '../../shared/Button'
 import { SmHrLine } from '../../shared/HrLine'
 import { IService } from '../types'
 import { ItemAttribute } from './ItemAttribute'
@@ -13,10 +14,11 @@ interface IResultsItemProps
     | 'criteria'
     | 'departments'
     | 'description'
-    | 'programs'
     | 'has_age_requirement'
     | 'has_fee_requirement'
     | 'has_income_requirement'
+    | 'link'
+    | 'programs'
   > {}
 
 const StyledArticle = styled.article`
@@ -31,15 +33,20 @@ const StyledDescription = styled.p`
   margin-bottom: 12px;
   outline: none;
 `
+const StyledButton = styled(Button)`
+  margin-top: 35px;
+`
+
 export function ResultsItem({
-  name,
   criteria,
-  description,
   departments,
-  programs,
+  description,
   has_age_requirement,
   has_fee_requirement,
   has_income_requirement,
+  link,
+  name,
+  programs,
 }: IResultsItemProps) {
   const { t } = useTranslation('common')
 
@@ -60,6 +67,9 @@ export function ResultsItem({
           has_income_requirement={has_income_requirement}
         />
       </section>
+      <StyledButton variant='arrowText' onClick={() => window.open(link, '_blank')}>
+        {t('getMoreInfo')}
+      </StyledButton>
       <SmHrLine />
     </StyledArticle>
   )
