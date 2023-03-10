@@ -1,11 +1,10 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { Categories } from './Categories'
-import { Departments } from './Departments'
+import { MoreFilters } from './MoreFilters'
 
 export interface IContentProps {
   label: string
-  selected: boolean
 }
 
 const StyledContent = styled(motion.div)`
@@ -17,8 +16,8 @@ const StyledContent = styled(motion.div)`
   z-index: 5;
 `
 
-export function Content({ label, selected }: IContentProps) {
-  if (!selected) return null
+export function Content({ label }: IContentProps) {
+  if (!label) return null
   return (
     <StyledContent
       key={'contentTab'}
@@ -26,8 +25,8 @@ export function Content({ label, selected }: IContentProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -40 }}
     >
-      {label === 'categories' && <Categories />}
-      {label === 'departments' && <Departments />}
+      {label === 'services' && <Categories />}
+      {label === 'moreFilters' && <MoreFilters />}
     </StyledContent>
   )
 }

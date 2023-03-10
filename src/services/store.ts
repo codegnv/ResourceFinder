@@ -1,16 +1,18 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import searchReducer from '../components/Header/Search/searchSlice'
 import categoriesReducer from '../components/Tabs/Content/Categories/categoriesSlice'
-import departmentsReducer from '../components/Tabs/Content/Departments/departmentsSlice'
+import costParticipationReducer from '../components/Tabs/Content/MoreFilters/costParticipationSlice'
+import departmentsReducer from '../components/Tabs/Content/MoreFilters/departmentsSlice'
 import tabsReducer from '../components/Tabs/tabsSlice'
 import { api } from './api'
 
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
+    costParticipation: costParticipationReducer,
     departments: departmentsReducer,
-    tabs: tabsReducer,
     search: searchReducer,
+    tabs: tabsReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: gDM => gDM().concat(api.middleware),

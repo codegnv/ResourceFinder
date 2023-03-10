@@ -5,9 +5,10 @@ import { ResultsHeader } from './ResultsHeader'
 import { ResultsItem } from './ResultsItem'
 import { IService } from './types'
 import { useDispatch } from 'react-redux'
-import { clearDepartmentsSelection } from 'src/components/Tabs/Content/Departments/departmentsSlice'
+import { clearDepartmentsSelection } from 'src/components/Tabs/Content/MoreFilters/departmentsSlice'
 import { clearTagSelection } from 'src/components/Tabs/Content/Categories/categoriesSlice'
 import { closeSearchbar, updateSearchText } from 'src/components/Header/Search/searchSlice'
+import { clearCostParticipationSelection } from '../Tabs/Content/MoreFilters/costParticipationSlice'
 
 interface IPaginatedResultsProps {
   data: Array<IService>
@@ -60,7 +61,7 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
     dispatch(clearTagSelection())
     dispatch(closeSearchbar())
     dispatch(updateSearchText(''))
-    //TODO: add dispatch for criteria when criteria is created
+    dispatch(clearCostParticipationSelection())
   }
 
   const handlePageClick = (event: { selected: number }) => {
@@ -75,16 +76,16 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
 
   const ResultsItems = currentItems.map(item => (
     <ResultsItem
-      name={item.name}
       criteria={item.criteria}
-      description={
-        item.description ||
-        'Lorem ipsum ut eu non esse laboris sint exercitation commodo consectetur dolor ipsum. Fugiat ut ea ea excepteur exercitation. Proident excepteur incididunt irure cillum sit laboris sit deserunt et cillum officia sit excepteur.'
-      }
-      programs={item.programs}
       departments={item.departments}
+      description={item.description}
+      has_age_requirement={item.has_age_requirement}
+      has_fee_requirement={item.has_fee_requirement}
+      has_income_requirement={item.has_income_requirement}
       key={item.name}
       link={item.link}
+      name={item.name}
+      programs={item.programs}
     />
   ))
 
@@ -99,9 +100,9 @@ export function PaginatedResults({ itemsPerPage = 10, data, services }: IPaginat
               : data.length
             : data.length
         }
-        total={data.length}
         clearAllFilters={handleClearAllFilters}
         filtersApplied={services.length != data.length ? true : false}
+        total={data.length}
       />
       {ResultsItems}
       {data.length > itemsPerPage && (

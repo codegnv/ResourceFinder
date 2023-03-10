@@ -24,7 +24,7 @@ const StyledCategories = styled.div`
 export function Categories({ variant = 'default' }: ICategoriesProps) {
   const router = useRouter()
   const dispatch = useDispatch()
-  const { data, isError, isLoading } = useGetAllTagsQuery(undefined)
+  const { data, isError, isLoading } = useGetAllTagsQuery(1)
   const selectedTags = useAppSelector(selectedCategories)
 
   const handleOnClick = (value: string) => {
@@ -65,7 +65,9 @@ export function Categories({ variant = 'default' }: ICategoriesProps) {
 
   return (
     <section>
-      {variant === 'default' && <Header count={selectedTags.length} onClear={handleOnClearTags} />}
+      {variant === 'default' && (
+        <Header count={selectedTags.length} onClear={handleOnClearTags} clearLabel='clearServices' />
+      )}
       <StyledCategories>
         <Tags tags={filteredTags || data.data} selectedTags={selectedTags} onClick={handleOnClick} />
       </StyledCategories>

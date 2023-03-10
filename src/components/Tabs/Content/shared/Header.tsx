@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { Button } from '../../../shared/Button'
 
 export interface IHeaderProps {
+  clearLabel: string
   count: number
   onClear: () => void
 }
@@ -16,14 +17,14 @@ const StyledRow = styled.div`
   margin-bottom: 20px;
 `
 
-export function Header({ count, onClear }: IHeaderProps) {
+export function Header({ clearLabel, count, onClear }: IHeaderProps) {
   const { t } = useTranslation('common')
   return (
     <StyledHeader>
       <StyledRow>
         {t('selectedItems', { count })}
         <Button onClick={onClear} variant='text'>
-          {t('clearFilter')}
+          {t(clearLabel)}
         </Button>
       </StyledRow>
       <hr />
