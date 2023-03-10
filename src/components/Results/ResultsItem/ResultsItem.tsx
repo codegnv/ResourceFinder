@@ -67,9 +67,11 @@ export function ResultsItem({
           has_income_requirement={has_income_requirement}
         />
       </section>
-      <StyledButton variant='arrowText' onClick={() => window.open(link, '_blank')}>
-        {t('getMoreInfo')}
-      </StyledButton>
+      {link && (
+        <StyledButton variant='arrowText' onClick={() => window.open(link, '_blank')}>
+          {t('getMoreInfo')}
+        </StyledButton>
+      )}
       <SmHrLine />
     </StyledArticle>
   )
