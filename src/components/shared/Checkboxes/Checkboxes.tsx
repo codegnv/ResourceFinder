@@ -11,7 +11,7 @@ const StyledCheckboxes = styled.div`
 interface ICheckboxesProps {
   selectedItems: Array<string>
   items: Array<ICheckbox>
-  onChange: (value: string) => void
+  onChange: (value: string, id: string | number) => void
 }
 
 export function Checkboxes({ selectedItems, items, onChange }: ICheckboxesProps) {
@@ -21,7 +21,7 @@ export function Checkboxes({ selectedItems, items, onChange }: ICheckboxesProps)
         <Checkbox
           key={checkbox.id}
           checkbox={checkbox}
-          selected={selectedItems.includes(checkbox.name)}
+          selected={selectedItems.includes(checkbox.name) || selectedItems.includes(checkbox.id as string)}
           onChange={onChange}
         />
       ))}

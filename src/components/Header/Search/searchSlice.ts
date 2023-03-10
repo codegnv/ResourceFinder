@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from 'src/services/store'
 
-export interface searchState {
+export interface SearchState {
   isSearchbarVisible: boolean
   searchText: string
 }
 
-const initialState: searchState = {
+const initialState: SearchState = {
   isSearchbarVisible: false,
   searchText: '',
 }

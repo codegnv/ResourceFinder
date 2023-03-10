@@ -9,7 +9,8 @@ export interface ITagProps {
 }
 
 const StyledTag = styled.button<Pick<ITagProps, 'selected'>>`
-  background-color: ${props => (props.selected ? props.theme.colors.secondary : props.theme.colors.ltGray)};
+  background-color: ${props =>
+    props.selected ? props.theme.colors.secondary : props.theme.colors.baseLight};
   box-shadow: ${props => (props.selected ? '0px 3px 10px #00000029;' : undefined)};
   border: 1px solid ${props => (props.selected ? props.theme.colors.secondary : '#c6cace')};
   border-radius: 5px;

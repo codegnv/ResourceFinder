@@ -17,7 +17,7 @@ const StyledTab = styled.button<Pick<ITabProps, 'fullWidth' | 'selected'>>`
   border-bottom: 0.5px solid ${props => props.theme.colors.gray};
   border-right: 0.5px solid ${props => props.theme.colors.gray};
   border-left: 0.5px solid transparent;
-  padding: 10px 12px;
+  padding: 10px 8px;
   font-size: 14px;
   line-height: 14px;
   font-weight: 600;
@@ -26,14 +26,21 @@ const StyledTab = styled.button<Pick<ITabProps, 'fullWidth' | 'selected'>>`
   background-color: ${props => (props.selected ? props.theme.colors.primary : props.theme.colors.ltGray)};
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: end;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   z-index: 10;
+  max-width: 50%;
+
+  && svg {
+    margin-bottom: -2px;
+  }
 `
-const StyledLabel = styled.span`
-  margin-right: 8px;
+const StyledLabel = styled.div`
   display: flex;
+  flex-grow: 3;
+  justify-content: center;
+  padding-left: 14px;
 `
 
 function Tab({ label, fullWidth, selected, onClick }: ITabProps) {

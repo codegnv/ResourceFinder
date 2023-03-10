@@ -5,7 +5,7 @@ import { ICheckbox } from 'src/components/Results/types'
 export interface ICheckboxProps {
   checkbox: ICheckbox
   selected: boolean
-  onChange: (value: string) => void
+  onChange: (value: string, id: string | number) => void
 }
 
 const StyledCheckboxItem = styled.div`
@@ -37,11 +37,11 @@ const StyledCheckbox = styled.span<Pick<ICheckboxProps, 'selected'>>`
     props.selected ? `${props.theme.colors.secondary} 1pt solid` : `${props.theme.colors.gray} 1pt solid`};
 `
 
-export function Checkbox({ checkbox: { name }, selected, onChange }: ICheckboxProps) {
+export function Checkbox({ checkbox: { name, id }, selected, onChange }: ICheckboxProps) {
   return (
     <StyledCheckboxItem>
       <StyledLabel>
-        <StyledInput type='checkbox' checked={selected} onChange={() => onChange(name)} />
+        <StyledInput type='checkbox' checked={selected} onChange={() => onChange(name, id)} />
         <StyledCheckbox selected={selected}>{selected && <GrClose size='17px' />}</StyledCheckbox>
         {name}
       </StyledLabel>

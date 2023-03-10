@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from 'next/head'
 import { Hero } from '../components/LandingPage/Hero'
 import { Footer } from '../components/Footer'
-import { useGetAllDepartmentsQuery, useGetAllTagsQuery } from '../services/api'
 
 function Home() {
-  // TODO: Some kind of prefetch
-  const tempTestGrabberForTags = useGetAllTagsQuery(undefined)
-  const tempTestGrabberForDepartments = useGetAllDepartmentsQuery(undefined)
-
   return (
     <>
       <Head>

@@ -1,17 +1,20 @@
-// TODO: Get this into data request areas
 export interface IService {
-  id: number
   criteria: Array<ICriteria>
   departments: Array<IDepartment>
   description: string
+  has_age_requirement: boolean
+  has_fee_requirement: boolean
+  has_income_requirement: boolean
+  id: number
+  link: string
   name: string
   programs: Array<IProgram>
   tags: Array<ITag>
 }
 
 export interface ICriteria {
-  id: number
   created_at: string
+  id: number
   name: string
 }
 
@@ -38,6 +41,6 @@ export interface ITag {
 }
 
 export interface ICheckbox {
-  id: number
+  id: number | string
   name: string
 }
